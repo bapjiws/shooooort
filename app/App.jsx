@@ -1,7 +1,9 @@
 import React from 'react';
 
+import './styles';
+
 const App = () => {
-    return <h1>Waddup, dawg?</h1>
+    return <div className="big-af">Waddup, dawg?</div>
 };
 
 export default App;
