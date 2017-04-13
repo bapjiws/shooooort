@@ -1,0 +1,10 @@
+@import 'mixins';
+@import 'colors';
+
+@include fontFace($family:'Montserrat-Regular', $src:'../assets/fonts/Montserrat/Montserrat-Regular');
+
+.logo {
+  font-size: 47px;
+  font-family: 'Montserrat-Regular';
+  color: $accent-color;
+}

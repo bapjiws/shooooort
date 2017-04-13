@@ -1,5 +1,3 @@
-// TODO: refactor
-
 // Source: https://github.com/magnetikonline/sassboilerplate/blob/master/fontface.scss
 // Also see: https://css-tricks.com/snippets/css/using-font-face/
 @mixin fontFace($family, $src, $style: normal, $weight: normal) {
@@ -9,14 +7,4 @@
     font-style: $style;
     font-weight: $weight;
   }
-}
-
-@include fontFace($family:'Montserrat', $src:'../assets/fonts/Montserrat/Montserrat-Regular');
-
-$accent-color: #EB4A42;
-
-.logo {
-  font-size: 47px;
-  font-family: 'Montserrat';
-  color: $accent-color;
 }

@@ -57,7 +57,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/src/index.html')
         }),
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('main.css')
     ],
 
     devtool: 'source-map' // TODO: disable in production
