@@ -22,24 +22,35 @@ module.exports = {
                     fallback: 'style-loader',
                     use: [
                         {
-                            loader: 'css-loader', options: {
+                            loader: 'css-loader',
+                            options: {
                                 sourceMap: true
                             }
                         },
                         {
-                            loader: 'sass-loader', options: {
+                            loader: 'sass-loader',
+                            options: {
                                 sourceMap: true
                             }
                         }
                     ]
                 })
+            },
+
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: 'assets/fonts/[name].[ext]'
+                    }
+                }
             }
         ]
     },
 
     resolve: {
-        extensions: ['.jsx', '.js', '.scss'],
-
+        extensions: ['.jsx', '.js', '.scss']
     },
 
     plugins: [
