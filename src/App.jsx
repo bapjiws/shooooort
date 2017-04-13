@@ -8,7 +8,7 @@ const App = () => {
     return <Grid>
         <Row>
             <Col xs={6} md={6}><div className="logo">Shooooort</div></Col>
-            <Col xs={6} md={6}><div className="logo">Shooooort</div></Col>
+            <Col xs={6} md={6}><div className="normal-text">The link shortener with a long name</div></Col>
         </Row>
     </Grid>
 };
