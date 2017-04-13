@@ -21,8 +21,16 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
-                        { loader: 'css-loader' },
-                        { loader: 'sass-loader' }
+                        {
+                            loader: 'css-loader', options: {
+                                sourceMap: true
+                            }
+                        },
+                        {
+                            loader: 'sass-loader', options: {
+                                sourceMap: true
+                            }
+                        }
                     ]
                 })
             }
@@ -39,5 +47,7 @@ module.exports = {
             template: path.join(__dirname, '/app/index.html')
         }),
         new ExtractTextPlugin('styles.css')
-    ]
+    ],
+
+    devtool: 'source-map' // TODO: disable in production
 };
