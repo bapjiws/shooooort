@@ -29,7 +29,13 @@ export default class Headline extends Component {
                     />
                 </form>
             </Col>
-            <Col xs={2} md={2}><Button className={this.state.input ? "button-with-input" : "button-no-input"}>Shorten this link</Button></Col>
+            <Col xs={2} md={2}>
+                <Button
+                    className={this.state.input ? "button-with-input" : "button-no-input"}
+                    disabled={this.state.input === ''}
+                >
+                    Shorten this link
+                </Button></Col>
             <Col xs={2} md={2}></Col>
         </Row>
     }

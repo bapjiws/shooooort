@@ -43,12 +43,12 @@
   color: $primary-text-color; // can't change placeholder's color like so.
 }
 
-.button-no-input {
+.button-no-input, button:disabled.button-no-input, button:disabled.button-no-input:hover {
   background-color: $disabled-button-background;
   color: $disabled-button-text-color;
 }
 
-.button-with-input {
+.button-with-input, button:hover.button-with-input {
   background-color: $accent-color;
   color: white;
 }
