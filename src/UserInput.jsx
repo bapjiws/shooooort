@@ -21,7 +21,7 @@ export default class Headline extends Component {
             <Col xs={6} md={6}>
                 <form>
                     <FormControl
-                        className="user-input"
+                        className={this.state.input ? "form-with-input" : "form-no-input"}
                         type="text"
                         value={this.state.input}
                         placeholder="Paste the link you want to shorten here"
@@ -29,7 +29,7 @@ export default class Headline extends Component {
                     />
                 </form>
             </Col>
-            <Col xs={2} md={2}><Button className="user-input">Shorten this link</Button></Col>
+            <Col xs={2} md={2}><Button className={this.state.input ? "button-with-input" : "button-no-input"}>Shorten this link</Button></Col>
             <Col xs={2} md={2}></Col>
         </Row>
     }
