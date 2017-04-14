@@ -6,9 +6,14 @@ export default class Headline extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // TODO: define
+            input: ''
         };
     }
+
+    handleChange = event => {
+        console.log('event:', event.target.value);
+        this.setState({input: event.target.value});
+    };
 
     render() {
         return <Row>
@@ -18,9 +23,9 @@ export default class Headline extends Component {
                     <FormControl
                         className="user-input"
                         type="text"
-                        // value={this.state.value}
+                        value={this.state.input}
                         placeholder="Paste the link you want to shorten here"
-                        // onChange={this.handleChange}
+                        onChange={this.handleChange}
                     />
                 </form>
             </Col>
