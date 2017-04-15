@@ -1,17 +1,17 @@
-var express = require('express');
-var request = require('request');
+const express = require('express');
+const request = require('request');
 
-var app = express();
+const app = express();
 
 // See: https://www.slideshare.net/michaelneale/cors-michael-webdirections
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
-app.get('/', function(req, res, next) {
-    var url = 'https://gymia-shorty.herokuapp.com/example1/stats';
+app.get('/', (req, res, next) => {
+    const url = 'https://gymia-shorty.herokuapp.com/example1/stats';
     request(url, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
