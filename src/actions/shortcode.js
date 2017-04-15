@@ -10,15 +10,11 @@ export const getShortcodeStats = shortcode => {
         .catch(error => console.log('error:', error))
 };
 
-export const shortenLink = (url, shortcode='example1') => {
+export const shortenLink = url => {
     axios({
         method: 'post',
         url: `/shorten`,
-        data: {
-            url
-            // ,
-            // shortcode
-        }
+        data: { url }
     })
         .then(response => console.log('response:', response))
         .catch(error => console.log('error:', error))

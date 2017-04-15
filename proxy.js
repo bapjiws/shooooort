@@ -3,9 +3,12 @@
 
 const express = require('express');
 const request = require('request');
+const bodyParser = require('body-parser');
 
 const app = express();
 const api = 'https://gymia-shorty.herokuapp.com';
+
+app.use(bodyParser.json());
 
 // See: https://www.slideshare.net/michaelneale/cors-michael-webdirections
 app.use((req, res, next) => {
@@ -15,8 +18,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/:shortcode/stats', (req, res, next) => {
-    console.log('req.url:', req.url);
-
     request(api + req.url, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
@@ -29,11 +30,9 @@ app.get('/:shortcode/stats', (req, res, next) => {
 
 // TODO: extract (error, response, body) callback for code reuse.
 app.post('/shorten', (req, res, next) => {
-    console.log('req.url:', req.url);
-    console.log('(api + req.url:', api, req.url);
     const url  = api.concat(req.url);
 
-    request.post({url, form: {url:'https://gist.github.com/gabrielecirulli/c48c40fc45bbe49da774'}}, (error, response, body) => {
+    request.post({url, form: {url: req.body.url}}, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
