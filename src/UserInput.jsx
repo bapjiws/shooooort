@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Row, Col, Button, FormControl } from 'react-bootstrap/lib';
 
-import getShortcodeStats from './actions/shortcode';
+import { shortenLink, getShortcodeStats } from './actions/shortcode';
 
 export default class Headline extends Component {
     constructor(props) {
@@ -35,7 +35,8 @@ export default class Headline extends Component {
                 <Button
                     className={this.state.input ? "button-with-input" : "button-no-input"}
                     disabled={this.state.input === ''}
-                    onClick={() => getShortcodeStats(this.state.input)}
+                    //onClick={() => getShortcodeStats(this.state.input)}
+                    onClick={() => shortenLink(this.state.input)}
                 >
                     Shorten this link
                 </Button></Col>

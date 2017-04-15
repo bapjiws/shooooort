@@ -1,3 +1,6 @@
+// On request, see: https://github.com/request/request
+// On express, see: https://expressjs.com/en/4x/api.html
+
 const express = require('express');
 const request = require('request');
 
@@ -15,6 +18,22 @@ app.get('/:shortcode/stats', (req, res, next) => {
     console.log('req.url:', req.url);
 
     request(api + req.url, (error, response, body) => {
+        console.log('error:', error);
+        console.log('statusCode:', response && response.statusCode);
+        console.log('body:', body);
+
+        // TODO: res.status(404) will reject the promise on client side and it won't get the {error: "The shortcode cannot be found in the system"} payload
+        res.status(response.statusCode).send(error || body);
+    });
+});
+
+// TODO: extract (error, response, body) callback for code reuse.
+app.post('/shorten', (req, res, next) => {
+    console.log('req.url:', req.url);
+    console.log('(api + req.url:', api, req.url);
+    const url  = api.concat(req.url);
+
+    request.post({url, form: {url:'https://gist.github.com/gabrielecirulli/c48c40fc45bbe49da774'}}, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
