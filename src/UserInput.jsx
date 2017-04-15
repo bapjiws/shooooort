@@ -35,7 +35,7 @@ export default class Headline extends Component {
                 <Button
                     className={this.state.input ? "button-with-input" : "button-no-input"}
                     disabled={this.state.input === ''}
-                    onClick={getShortcodeStats('example1')}
+                    onClick={() => getShortcodeStats(this.state.input)}
                 >
                     Shorten this link
                 </Button></Col>

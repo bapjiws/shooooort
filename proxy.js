@@ -2,6 +2,7 @@ const express = require('express');
 const request = require('request');
 
 const app = express();
+const api = 'https://gymia-shorty.herokuapp.com';
 
 // See: https://www.slideshare.net/michaelneale/cors-michael-webdirections
 app.use((req, res, next) => {
@@ -10,13 +11,15 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res, next) => {
-    const url = 'https://gymia-shorty.herokuapp.com/example1/stats';
-    request(url, (error, response, body) => {
+app.get('/:shortcode/stats', (req, res, next) => {
+    console.log('req.url:', req.url);
+
+    request(api + req.url, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
 
+        // TODO: res.status(404) will reject the promise on client side and it won't get the {error: "The shortcode cannot be found in the system"} payload
         res.status(response.statusCode).send(error || body);
     });
 });
