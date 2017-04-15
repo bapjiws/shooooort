@@ -7,7 +7,10 @@ axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const getShortcodeStats = shortcode => {
-    axios.get(`/${shortcode}/stats`)
+    axios({
+        method: 'get',
+        url: `/${shortcode}/stats`
+    })
         .then(response => console.log('response:', response))
         .catch(error => console.log('error:', error))
 };
@@ -15,7 +18,7 @@ export const getShortcodeStats = shortcode => {
 export const shortenLink = url => {
     axios({
         method: 'post',
-        url: `/shorten`,
+        url: '/shorten',
         data: { url }
     })
         .then(response => console.log('response:', response))
