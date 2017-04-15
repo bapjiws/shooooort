@@ -21,6 +21,7 @@ export default class Headline extends Component {
         return <Row>
             <Col xs={2} md={2}></Col>
             <Col xs={6} md={6}>
+                {/*TODO: add simple validation: links should start with http:// or https://*/}
                 <form>
                     <FormControl
                         className={this.state.input ? "form-with-input" : "form-no-input"}

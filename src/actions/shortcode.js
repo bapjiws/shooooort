@@ -21,6 +21,6 @@ export const shortenLink = url => {
         url: '/shorten',
         data: { url }
     })
-        .then(response => console.log('response:', response))
+        .then(response => alert('Your shortcode is '+ response.data.shortcode))
         .catch(error => console.log('error:', error))
 };
