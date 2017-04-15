@@ -16,7 +16,7 @@ const getShortcodeStats = shortcode => {
     //     .catch(error => console.log('error:', error))
     //
     axios.get(`http://localhost:3000`) // /${shortcode}/stats
-        .then(response => console.log('response:', response.data))
+        .then(response => console.log('response:', response))
         .catch(error => console.log('error:', error))
 
     // axios({
