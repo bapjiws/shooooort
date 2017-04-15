@@ -28,7 +28,6 @@ app.get('/:shortcode/stats', (req, res, next) => {
     });
 });
 
-// TODO: extract (error, response, body) callback for code reuse.
 app.post('/shorten', (req, res, next) => {
     const url  = api.concat(req.url);
 
