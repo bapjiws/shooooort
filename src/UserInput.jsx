@@ -24,7 +24,7 @@ class Headline extends Component {
     };
 
     render() {
-        return <Row>
+        return <Row className="user-input">
             <Col xs={2} md={2}></Col>
             <Col xs={6} md={6}>
                 {/*TODO: add simple validation: links should start with http:// or https://*/}

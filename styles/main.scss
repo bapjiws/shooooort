@@ -22,8 +22,12 @@
 .row {
   display: flex;
   align-items: baseline;
-  margin-bottom: 5em;
   //flex-wrap: wrap;
+}
+
+.headline, .user-input {
+  margin-top: 2.5em;
+  margin-bottom: 5em;
 }
 
 .row > [class*='col-'] {
