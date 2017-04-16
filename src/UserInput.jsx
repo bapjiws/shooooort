@@ -18,6 +18,11 @@ class Headline extends Component {
         this.setState({input: event.target.value});
     };
 
+    handleCLick = () => {
+        this.props.shortenLink(this.state.input);
+        this.setState({input: ''});
+    };
+
     render() {
         return <Row>
             <Col xs={2} md={2}></Col>
@@ -38,7 +43,7 @@ class Headline extends Component {
                     className={this.state.input ? "button-with-input" : "button-no-input"}
                     disabled={this.state.input === ''}
                     //onClick={() => getShortcodeStats(this.state.input)}
-                    onClick={() => this.props.shortenLink(this.state.input)} // TODO: erase current input
+                    onClick={this.handleCLick}
                 >
                     Shorten this link
                 </Button></Col>
