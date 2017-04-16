@@ -23,6 +23,19 @@ class Headline extends Component {
         this.setState({input: ''});
     };
 
+    handleKeyDown = event => {
+
+        switch (event.key) {
+            case 'Enter':
+                console.log('Enter');
+                event.preventDefault();
+                this.props.shortenLink(this.state.input);
+                this.setState({input: ''});
+                // TODO: blur
+                break;
+        }
+    };
+
     render() {
         return <Row className="user-input">
             <Col xs={2} md={2}></Col>
@@ -35,6 +48,7 @@ class Headline extends Component {
                         value={this.state.input}
                         placeholder="Paste the link you want to shorten here"
                         onChange={this.handleChange}
+                        onKeyDown={this.handleKeyDown}
                     />
                 </form>
             </Col>
