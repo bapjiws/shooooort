@@ -6,7 +6,10 @@ const request = require('request');
 const bodyParser = require('body-parser');
 
 const app = express();
-const api = 'https://gymia-shorty.herokuapp.com';
+
+// Couldn't yet find a way to use process.env constructed in Webpack config, need to parse separately.
+const dotEnvVars = require('dotenv').config().parsed;
+const api = dotEnvVars.API;
 
 app.use(bodyParser.json());
 

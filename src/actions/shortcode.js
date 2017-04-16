@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Our proxy server -- mimics all the routes exactly so that it can be substituted w/ a CORS-supporting server.
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = process.env.PROXY;
 
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
