@@ -1,6 +1,7 @@
 import {
     ADD_SHORTCODE_SUCCESS,
-    ADD_SHORTCODE_FAILURE
+    ADD_SHORTCODE_FAILURE,
+    CLEAR_HISTORY
 } from '../actions/types';
 
 const initialState = {
@@ -27,6 +28,9 @@ const shortcodeReducer = (state = initialState, action) => {
                 ...state,
                 error
             };
+
+        case CLEAR_HISTORY:
+            return initialState;
 
         default:
             return state;

@@ -2,7 +2,8 @@ import axios from 'axios';
 
 import {
     ADD_SHORTCODE_SUCCESS,
-    ADD_SHORTCODE_FAILURE
+    ADD_SHORTCODE_FAILURE,
+    CLEAR_HISTORY
 } from '../actions/types';
 
 // Our proxy server -- mimics all the routes exactly so that it can be substituted w/ a CORS-supporting server.
@@ -38,3 +39,5 @@ export const shortenLink = url => {
 
 export const addShortcodeSuccess = ({ shortcode, url }) => ({type: ADD_SHORTCODE_SUCCESS, shortcode, url});
 export const addShortcodeFailure = error => ({type: ADD_SHORTCODE_FAILURE, error});
+
+export const clearHistory = () => ({type: CLEAR_HISTORY});

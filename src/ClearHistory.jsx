@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { Row, Col } from 'react-bootstrap/lib';
 
+import { clearHistory } from '../redux/actions/shortcodes';
+
 const ClearHistory = ({ clearHistory }) =>
     <Row>
         <Col xs={2} md={2}></Col>
@@ -10,7 +12,7 @@ const ClearHistory = ({ clearHistory }) =>
             Previously shortened by you
         </Col>
         <Col xs={2} md={2}>
-            <a onClick={() => alert('History will be erased!')}>Clear history</a>
+            <a onClick={clearHistory}>Clear history</a>
         </Col>
         <Col xs={2} md={2}></Col>
         <Col xs={2} md={2}></Col>
@@ -18,5 +20,5 @@ const ClearHistory = ({ clearHistory }) =>
 
 export default connect(
     null,
-    {} // TODO: inject clearHistory action
+    { clearHistory }
 )(ClearHistory);
