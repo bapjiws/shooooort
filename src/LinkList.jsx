@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import { Row, Col, Button, FormControl } from 'react-bootstrap/lib';
+import { Row, Col } from 'react-bootstrap/lib';
 
-const LinkList = ({ links }) => {
-    return <div>
+const LinkList = ({ links }) =>
+    <div>
         {
             links.map(link =>
-                 <Row key={link.shortcode}>
+                <Row key={link.shortcode}>
                     <Col xs={2} md={2}></Col>
                     <Col xs={5} md={5}>
                         <div><span>shooooort.com/</span><span>{ `${link.shortcode}` }</span></div>
@@ -23,10 +23,7 @@ const LinkList = ({ links }) => {
                 </Row>
             )
         }
-    </div>
-
-
-};
+    </div>;
 
 export default connect(
     state => ({
