@@ -5,6 +5,7 @@ import { Row, Col } from 'react-bootstrap/lib';
 
 import { clearHistory } from '../redux/actions/shortcodes';
 
+// TODO: check Navbar.Link component
 const ClearHistory = ({ clearHistory }) =>
     <Row>
         <Col xs={2} md={2}></Col>

@@ -13,12 +13,12 @@ axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const getShortcodeStats = shortcode => {
-    axios({
+    return axios({
         method: 'get',
         url: `/${shortcode}/stats`
     })
-        .then(response => console.log('response:', response))
-        .catch(error => console.log('error:', error))
+        // .then(response => console.log('response:', response))
+        // .catch(error => console.log('error:', error))
 };
 
 export const shortenLink = url => {
@@ -31,13 +31,16 @@ export const shortenLink = url => {
         })
             .then(response => dispatch(addShortcodeSuccess({
                 shortcode: response.data.shortcode,
-                url
+                url,
+                startDate: new Date(),
+                lastSeenDate: new Date(),
+                redirectCount: 0
             })))
             .catch(error => dispatch(addShortcodeFailure(error)));
     }
 };
 
-export const addShortcodeSuccess = ({ shortcode, url }) => ({type: ADD_SHORTCODE_SUCCESS, shortcode, url});
+export const addShortcodeSuccess = data => ({type: ADD_SHORTCODE_SUCCESS, data});
 export const addShortcodeFailure = error => ({type: ADD_SHORTCODE_FAILURE, error});
 
 export const clearHistory = () => ({type: CLEAR_HISTORY});

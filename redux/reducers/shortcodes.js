@@ -11,7 +11,7 @@ const initialState = {
 
 // TODO: test for purity with deep freeze.
 const shortcodeReducer = (state = initialState, action) => {
-    const { type, shortcode, url, error } = action;
+    const { type, data, error } = action;
 
     switch (type) {
 
@@ -19,7 +19,7 @@ const shortcodeReducer = (state = initialState, action) => {
             // let newData = state.data; // TODO: most likely need { ...state.data }, test it.
             // newData[shortcode] = { url };
             return {
-                list: [...state.list, { shortcode, url }],
+                list: [...state.list, data],
                 error: null
             };
 
