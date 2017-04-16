@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import TimeAgo from 'react-timeago';
 import { Row, Col } from 'react-bootstrap/lib';
 
 const LinkList = ({ links }) =>
@@ -27,10 +28,10 @@ const LinkList = ({ links }) =>
                         <div>{ link.url }</div>
                     </Col>
                     <Col xs={1} md={1}>
-                        100
+                        { link.redirectCount }
                     </Col>
                     <Col xs={2} md={2}>
-                        2 days ago
+                        { <TimeAgo date={link.lastSeenDate} /> }
                     </Col>
                     <Col xs={2} md={2}></Col>
                 </Row>
