@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    data: {},
+    list: [],
     error: null
 };
 
@@ -15,10 +15,10 @@ const shortcodeReducer = (state = initialState, action) => {
     switch (type) {
 
         case ADD_SHORTCODE_SUCCESS:
-            let newData = state.data; // TODO: most likely need { ...state.data }, test it.
-            newData[shortcode] = { url };
+            // let newData = state.data; // TODO: most likely need { ...state.data }, test it.
+            // newData[shortcode] = { url };
             return {
-                data: newData,
+                list: [...state.list, { shortcode, url }],
                 error: null
             };
 

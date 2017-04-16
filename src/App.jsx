@@ -6,11 +6,13 @@ import { Grid } from 'react-bootstrap/lib';
 
 import Headline from './Headline';
 import UserInput from './UserInput';
+import LinkList from './LinkList';
 
 const App = () => {
     return <Grid>
         <Headline/>
         <UserInput/>
+        <LinkList/>
     </Grid>
 };
 
