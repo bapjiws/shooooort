@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Row, Col, Button, FormControl } from 'react-bootstrap/lib';
 
-import { shortenLink, getShortcodeStats } from './actions/shortcode';
+import { shortenLink, getShortcodeStats } from '../redux/actions/shortcodes';
 
-export default class Headline extends Component {
+class Headline extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +38,7 @@ export default class Headline extends Component {
                     className={this.state.input ? "button-with-input" : "button-no-input"}
                     disabled={this.state.input === ''}
                     //onClick={() => getShortcodeStats(this.state.input)}
-                    onClick={() => shortenLink(this.state.input)}
+                    onClick={() => this.props.shortenLink(this.state.input)} // TODO: erase current input
                 >
                     Shorten this link
                 </Button></Col>
@@ -45,3 +46,8 @@ export default class Headline extends Component {
         </Row>
     }
 }
+
+export default connect(
+    null, // mapStateToProps
+    { shortenLink }
+)(Headline);

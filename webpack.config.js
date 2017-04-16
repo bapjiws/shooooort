@@ -22,7 +22,8 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 include: [
-                    path.join(__dirname, "/src")
+                    path.join(__dirname, "/src"),
+                    path.join(__dirname, "/redux")
                 ],
                 use: [{
                     loader: 'babel-loader',
