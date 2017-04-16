@@ -4,20 +4,21 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    list: [], // TODO: store shortened URL to avoid GET request to /:shortcode
+    data: {},
     error: null
 };
 
 // TODO: test for purity with deep freeze.
 const shortcodeReducer = (state = initialState, action) => {
-    const { type, shortcode, error } = action;
+    const { type, shortcode, url, error } = action;
 
     switch (type) {
 
         case ADD_SHORTCODE_SUCCESS:
+            let newData = state.data; // TODO: most likely need { ...state.data }, test it.
+            newData[shortcode] = { url };
             return {
-                ...state,
-                list: [...state.list, shortcode],
+                data: newData,
                 error: null
             };
 

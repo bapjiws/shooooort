@@ -28,10 +28,13 @@ export const shortenLink = url => {
             url: '/shorten',
             data: { url }
         })
-            .then(response => dispatch(addShortcodeSuccess(response.data.shortcode)))
+            .then(response => dispatch(addShortcodeSuccess({
+                shortcode: response.data.shortcode,
+                url
+            })))
             .catch(error => dispatch(addShortcodeFailure(error)));
     }
 };
 
-export const addShortcodeSuccess = shortcode => ({type: ADD_SHORTCODE_SUCCESS, shortcode});
+export const addShortcodeSuccess = ({ shortcode, url }) => ({type: ADD_SHORTCODE_SUCCESS, shortcode, url});
 export const addShortcodeFailure = error => ({type: ADD_SHORTCODE_FAILURE, error});
