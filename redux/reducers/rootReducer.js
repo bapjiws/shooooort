@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import shortcodes from './shortcodes';
+import shortcodeReducer from './shortcodes';
 
 
 const rootReducer = combineReducers({
-    shortcodes
+    shortcodes: shortcodeReducer
 });
 
 export default rootReducer

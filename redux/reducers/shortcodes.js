@@ -4,12 +4,12 @@ import {
 } from '../actions/types';
 
 const initialState = {
-    list: [],
+    list: [], // TODO: store shortened URL to avoid GET request to /:shortcode
     error: null
 };
 
 // TODO: test for purity with deep freeze.
-const shortcodes = (state = initialState, action) => {
+const shortcodeReducer = (state = initialState, action) => {
     const { type, shortcode, error } = action;
 
     switch (type) {
@@ -33,4 +33,4 @@ const shortcodes = (state = initialState, action) => {
 
 };
 
-export default shortcodes;
+export default shortcodeReducer;
