@@ -5,6 +5,19 @@ import { Row, Col } from 'react-bootstrap/lib';
 
 const LinkList = ({ links }) =>
     <div>
+        <Row>
+            <Col xs={2} md={2}></Col>
+            <Col xs={5} md={5}>
+                LINK
+            </Col>
+            <Col xs={1} md={1}>
+                VISITS
+            </Col>
+            <Col xs={2} md={2}>
+                LAST VISITED
+            </Col>
+            <Col xs={2} md={2}></Col>
+        </Row>
         {
             links.map(link =>
                 <Row key={link.shortcode}>
