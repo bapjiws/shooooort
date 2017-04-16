@@ -11,6 +11,7 @@ class Headline extends Component {
         this.state = {
             input: ''
         };
+        this.form = null;
     }
 
     handleChange = event => {
@@ -24,14 +25,12 @@ class Headline extends Component {
     };
 
     handleKeyDown = event => {
-
         switch (event.key) {
             case 'Enter':
-                console.log('Enter');
                 event.preventDefault();
                 this.props.shortenLink(this.state.input);
                 this.setState({input: ''});
-                // TODO: blur
+                this.form.blur();
                 break;
         }
     };
@@ -49,6 +48,7 @@ class Headline extends Component {
                         placeholder="Paste the link you want to shorten here"
                         onChange={this.handleChange}
                         onKeyDown={this.handleKeyDown}
+                        inputRef={ref => this.form = ref}
                     />
                 </form>
             </Col>
