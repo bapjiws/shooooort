@@ -1,0 +1,1 @@
+export const inputIsValid = input => !input ? false : input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://';

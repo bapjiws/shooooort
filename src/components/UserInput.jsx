@@ -5,6 +5,8 @@ import { Row, Col, Button, FormGroup, FormControl, HelpBlock } from 'react-boots
 
 import { shortenLink } from '../../redux/actions/linksData';
 
+import { inputIsValid } from '../../utils/inputValidation';
+
 // TODO: fix class name!
 class Headline extends Component {
     constructor(props) {
@@ -20,7 +22,7 @@ class Headline extends Component {
         const input = event.target.value;
         this.setState({
             input,
-            inputIsValid: input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://'
+            inputIsValid: inputIsValid(input)
         });
     };
 
@@ -52,6 +54,8 @@ class Headline extends Component {
     };
 
     render() {
+        const inputIsValid = this.state.inputIsValid;
+
         return <Row className="user-input">
             <Col md={9}>
                 <form>
@@ -68,16 +72,16 @@ class Headline extends Component {
                             inputRef={ref => this.form = ref}
                         />
                         <FormControl.Feedback />
-                        { this.state.input && !this.state.inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
+                        { !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
                     </FormGroup>
                 </form>
             </Col>
             <Col className="padding-left-button" md={3}>
                 <Button
-                    className={this.state.input && this.state.inputIsValid ?
+                    className={inputIsValid ?
                         "button-with-input text-button-with-input width-button-with-input" :
                         "button-no-input text-button-no-input width-button-no-input"}
-                    disabled={!(this.state.input && this.state.inputIsValid)}
+                    disabled={!inputIsValid}
                     onClick={this.handleCLick}
                 >
                     Shorten this link
