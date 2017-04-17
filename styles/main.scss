@@ -1,7 +1,7 @@
 // Use this to debug the layout.
-.row > [class*='col-'] {
-  border: 2px solid red;
-}
+//.row > [class*='col-'] {
+//  border: 2px solid red;
+//}
 
 @import 'mixins';
 @import 'colors';
@@ -24,13 +24,13 @@
   color: $secondary-text-color;
 }
 
-.text-button-no-input {
+.text-button-no-input, button:hover.text-button-no-input {
   font-size: 16px;
   font-family: 'Roboto-Regular';
   color: $disabled-button-text-color;
 }
 
-.text-button-with-input {
+.text-button-with-input, button:hover.text-button-with-input {
   font-size: 16px;
   font-family: 'Roboto-Regular';
   color: white;
@@ -108,21 +108,27 @@
 /*MARGINS*/
 
 /*TEXT ALIGNMENTS*/
-.text-align-end {
-  text-align: end;
-}
-
 .text-align-center {
   text-align: center;
 }
 /*TEXT ALIGNMENTS*/
+
+/*PADDINGS*/
+.padding-left-description {
+  padding-left: 9.5em;
+}
+
+.padding-left-button {
+  padding-left: 2em;
+}
+/*PADDINGS*/
 
 /*BACKGROUND COLORS*/
 .form-control {
   background-color: $light-background;
 }
 
-.button-no-input, button:disabled.button-no-input, button:disabled.button-no-input:hover {
+.button-no-input, button:disabled:hover.button-no-input {
   background-color: $disabled-button-background;
 }
 
@@ -132,7 +138,7 @@
 /*BACKGROUND COLORS*/
 
 /*SIZES*/
-.button-no-input-width, .button-with-input-width {
-  width: 12em;
+.width-button-no-input, .width-button-with-input {
+  width: 10em;
 }
 /*SIZES*/

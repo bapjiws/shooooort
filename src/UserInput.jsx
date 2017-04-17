@@ -50,11 +50,11 @@ class Headline extends Component {
                     />
                 </form>
             </Col>
-            <Col className="text-align-end" md={3}>
+            <Col className="padding-left-button" md={3}>
                 <Button
                     className={this.state.input ?
-                        "button-with-input text-button-with-input button-with-input-width" :
-                        "button-no-input text-button-no-input button-no-input-width"}
+                        "button-with-input text-button-with-input width-button-with-input" :
+                        "button-no-input text-button-no-input width-button-no-input"}
                     disabled={this.state.input === ''}
                     onClick={this.handleCLick}
                 >

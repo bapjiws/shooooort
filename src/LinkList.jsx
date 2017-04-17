@@ -18,10 +18,10 @@ class LinkList extends Component {
                 <Col className="text-table-heading" md={8}>
                     LINK
                 </Col>
-                <Col className="text-table-heading text-align-center" md={2}>
+                <Col className="text-table-heading text-align-center" md={1}>
                     VISITS
                 </Col>
-                <Col className="text-table-heading text-align-center" md={2}>
+                <Col className="text-table-heading text-align-center" md={3}>
                     LAST VISITED
                 </Col>
             </Row>
@@ -32,10 +32,10 @@ class LinkList extends Component {
                             <div><span className="text-url-body">shooooort.com/</span><span className="text-url-shortcode">{ `${key}` }</span></div>
                             <div className="text-url-original">{ linksData[key].url }</div>
                         </Col>
-                        <Col className="text-data text-align-center" md={2}>
+                        <Col className="text-data text-align-center" md={1}>
                             { linksData[key].redirectCount }
                         </Col>
-                        <Col className="text-data text-align-center" md={2}>
+                        <Col className="text-data text-align-center" md={3}>
                             { <TimeAgo date={linksData[key].lastSeenDate} /> }
                         </Col>
                     </Row>
