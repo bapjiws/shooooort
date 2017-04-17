@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Row, Col, Button, FormControl } from 'react-bootstrap/lib';
+import { Row, Col, Button, FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
 
 import { shortenLink } from '../../redux/actions/linksData';
 
@@ -9,13 +9,18 @@ class Headline extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: ''
+            input: '',
+            showHelpBlock: false
         };
         this.form = null;
     }
 
     handleChange = event => {
-        this.setState({input: event.target.value});
+        const input = event.target.value;
+        this.setState({
+            input,
+            showHelpBlock: input && !(input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://')
+        });
     };
 
     handleCLick = () => {
@@ -34,20 +39,31 @@ class Headline extends Component {
         }
     };
 
+    getValidationState = () => {
+        const input = this.state.input;
+        if (!input) return;
+         return input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://' ? 'success' : 'error';
+    };
+
     render() {
-        return <Row className="user-input flex-cross-axis-align-center">
+        return <Row className="user-input">
             <Col md={9}>
-                {/*TODO: add simple validation: links should start with http:// or https://*/}
                 <form>
-                    <FormControl
-                        className="text-form-control"
-                        type="text"
-                        value={this.state.input}
-                        placeholder="Paste the link you want to shorten here"
-                        onChange={this.handleChange}
-                        onKeyDown={this.handleKeyDown}
-                        inputRef={ref => this.form = ref}
-                    />
+                    <FormGroup
+                        validationState={this.getValidationState()}
+                    >
+                        <FormControl
+                            className="text-form-control"
+                            type="text"
+                            value={this.state.input}
+                            placeholder="Paste the link you want to shorten here"
+                            onChange={this.handleChange}
+                            onKeyDown={this.handleKeyDown}
+                            inputRef={ref => this.form = ref}
+                        />
+                        <FormControl.Feedback />
+                        { this.state.showHelpBlock && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
+                    </FormGroup>
                 </form>
             </Col>
             <Col className="padding-left-button" md={3}>
