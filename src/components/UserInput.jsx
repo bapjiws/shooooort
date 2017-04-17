@@ -5,12 +5,13 @@ import { Row, Col, Button, FormGroup, FormControl, HelpBlock } from 'react-boots
 
 import { shortenLink } from '../../redux/actions/linksData';
 
+// TODO: fix class name!
 class Headline extends Component {
     constructor(props) {
         super(props);
         this.state = {
             input: '',
-            showHelpBlock: false
+            inputIsValid: false
         };
         this.form = null;
     }
@@ -19,7 +20,7 @@ class Headline extends Component {
         const input = event.target.value;
         this.setState({
             input,
-            showHelpBlock: input && !(input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://')
+            inputIsValid: input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://'
         });
     };
 
@@ -31,6 +32,11 @@ class Headline extends Component {
     handleKeyDown = event => {
         switch (event.key) {
             case 'Enter':
+                if (!(this.state.input && this.state.inputIsValid)) {
+                    event.preventDefault();
+                    return;
+                }
+
                 event.preventDefault();
                 this.props.shortenLink(this.state.input);
                 this.setState({input: ''});
@@ -62,16 +68,16 @@ class Headline extends Component {
                             inputRef={ref => this.form = ref}
                         />
                         <FormControl.Feedback />
-                        { this.state.showHelpBlock && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
+                        { this.state.input && !this.state.inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
                     </FormGroup>
                 </form>
             </Col>
             <Col className="padding-left-button" md={3}>
                 <Button
-                    className={this.state.input ?
+                    className={this.state.input && this.state.inputIsValid ?
                         "button-with-input text-button-with-input width-button-with-input" :
                         "button-no-input text-button-no-input width-button-no-input"}
-                    disabled={this.state.input === ''}
+                    disabled={!(this.state.input && this.state.inputIsValid)}
                     onClick={this.handleCLick}
                 >
                     Shorten this link
