@@ -35,7 +35,7 @@ class Headline extends Component {
     };
 
     render() {
-        return <Row className="user-input">
+        return <Row className="user-input flex-cross-axis-align-center">
             <Col xs={2} md={2}></Col>
             <Col xs={6} md={6}>
                 {/*TODO: add simple validation: links should start with http:// or https://*/}

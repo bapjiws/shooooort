@@ -1,3 +1,5 @@
+// If decide to abandon React Bootstrap, check: http://www.bootply.com/127827# or https://jsfiddle.net/nV3Ua/1821/
+
 @import 'mixins';
 @import 'colors';
 
@@ -52,18 +54,20 @@
   color: $secondary-text-color;
 }
 
-// These two are needed to give row cells equal height.
-// If decide to abandon React Bootstrap, check: http://www.bootply.com/127827# or https://jsfiddle.net/nV3Ua/1821/
-.row {
+.flex-cross-axis-align-baseline {
   display: flex;
   align-items: baseline;
-  //flex-wrap: wrap;
 }
 
+.flex-cross-axis-align-center {
+  display: flex;
+  align-items: center;
+}
+
+// TODO: get rid of this one
 .row > [class*='col-'] {
   display: flex;
   flex-direction: column;
-  //align-items: center;
 }
 
 .headline, .user-input {

@@ -29,7 +29,7 @@ class LinkList extends Component {
             </Row>
             {
                 Object.keys(linksData).map(key =>
-                    <Row className="link-list-row" key={key}>
+                    <Row className="link-list-row flex-cross-axis-align-center" key={key}>
                         <Col xs={2} md={2}></Col>
                         <Col xs={5} md={5}>
                             <div><span className="text-url-body">shooooort.com/</span><span className="text-url-shortcode">{ `${key}` }</span></div>
