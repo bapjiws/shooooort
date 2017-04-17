@@ -16,13 +16,13 @@ class LinkList extends Component {
         return <div>
             <Row className="link-list-header">
                 <Col xs={2} md={2}></Col>
-                <Col xs={5} md={5}>
+                <Col className="text-table-heading" xs={5} md={5}>
                     LINK
                 </Col>
-                <Col xs={1} md={1}>
+                <Col className="text-table-heading" xs={1} md={1}>
                     VISITS
                 </Col>
-                <Col xs={2} md={2}>
+                <Col className="text-table-heading" xs={2} md={2}>
                     LAST VISITED
                 </Col>
                 <Col xs={2} md={2}></Col>
@@ -32,13 +32,13 @@ class LinkList extends Component {
                     <Row className="link-list-row" key={key}>
                         <Col xs={2} md={2}></Col>
                         <Col xs={5} md={5}>
-                            <div><span>shooooort.com/</span><span>{ `${key}` }</span></div>
-                            <div>{ linksData[key].url }</div>
+                            <div><span className="text-url-body">shooooort.com/</span><span className="text-url-shortcode">{ `${key}` }</span></div>
+                            <div className="text-url-original">{ linksData[key].url }</div>
                         </Col>
-                        <Col xs={1} md={1}>
+                        <Col className="text-data" xs={1} md={1}>
                             { linksData[key].redirectCount }
                         </Col>
-                        <Col xs={2} md={2}>
+                        <Col className="text-data" xs={2} md={2}>
                             { <TimeAgo date={linksData[key].lastSeenDate} /> }
                         </Col>
                         <Col xs={2} md={2}></Col>

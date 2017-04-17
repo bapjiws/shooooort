@@ -2,7 +2,7 @@
 @import 'colors';
 
 @include fontFace($family:'Montserrat-Regular', $src:'../assets/fonts/Montserrat/Montserrat-Regular');
-.logo {
+.text-logo {
   font-size: 47px;
   font-family: 'Montserrat-Regular';
   text-decoration: underline;
@@ -10,11 +10,41 @@
 }
 
 @include fontFace($family:'Roboto-Light', $src:'../assets/fonts/Roboto/Roboto-Light');
-.normal-text {
+.text-normal {
   font-size: 16px;
   font-family: 'Roboto-Light';
   color: $secondary-text-color;
-  text-align: end;
+}
+
+.text-section-heading {
+  font-size: 22px;
+  font-family: 'Roboto-Light';
+  color: $primary-text-color;
+}
+
+@include fontFace($family:'Roboto-Regular', $src:'../assets/fonts/Roboto/Roboto-Regular');
+.text-url-body, .text-data {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: $primary-text-color;
+}
+
+.text-clear-links-link, .text-url-shortcode {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: $accent-color;
+}
+
+.text-url-original {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: $unimportant-text-color;
+}
+
+.text-table-heading {
+  font-size: 14px;
+  font-family: 'Roboto-Regular';
+  color: $secondary-text-color;
 }
 
 // These two are needed to give row cells equal height.
@@ -39,6 +69,10 @@
 .clear-history, .link-list-header, .link-list-row {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+}
+
+.text-align-end {
+  text-align: end;
 }
 
 // TODO: since color prop doesn't do anything, probably only need only one directive.

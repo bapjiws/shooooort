@@ -9,11 +9,11 @@ import { clearHistory } from '../redux/actions/linksData';
 const ClearHistory = ({ clearHistory }) =>
     <Row className="clear-history">
         <Col xs={2} md={2}></Col>
-        <Col xs={4} md={4}>
+        <Col className="text-section-heading" xs={4} md={4}>
             Previously shortened by you
         </Col>
         <Col xs={2} md={2}>
-            <a onClick={clearHistory}>Clear history</a>
+            <a className="text-clear-links-link" onClick={clearHistory}>Clear history</a>
         </Col>
         <Col xs={2} md={2}></Col>
         <Col xs={2} md={2}></Col>

@@ -17,6 +17,7 @@ const envVars = Object.keys(dotEnvVars).
 /*On how to use Hot Module Replacement + React Hot Loader, see:
  https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96#.npgb2r5nn
  http://gaearon.github.io/react-hot-loader/getstarted/*/
+// TODO: enable hot reloading for scss files.
 module.exports = {
     // Dev entry.
     entry: [
@@ -87,7 +88,6 @@ module.exports = {
     devtool: 'source-map', // TODO: disable in production
 
     devServer: {
-        hot: true//, // <-- Enables HMR in webpack-dev-server and in libs running in the browser
-        // contentBase: './src'
+        hot: true // <-- Enables HMR in webpack-dev-server and in libs running in the browser
     }
 };
