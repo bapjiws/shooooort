@@ -7,8 +7,7 @@ import { shortenLink } from '../../redux/actions/linksData';
 
 import { inputIsValid } from '../../utils/inputValidation';
 
-// TODO: fix class name!
-class Headline extends Component {
+class UserInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -93,4 +92,4 @@ class Headline extends Component {
 export default connect(
     null, // mapStateToProps
     { shortenLink }
-)(Headline);
+)(UserInput);
