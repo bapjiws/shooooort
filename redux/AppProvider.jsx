@@ -19,7 +19,6 @@ export default class AppProvider extends Component {
     componentWillMount() {
         // See: https://github.com/rt2zz/redux-persist#persiststorestore-config-callback
         persistStore(store, {storage: localForage}, () => {
-            console.log('REHYDRATED');
             this.setState({ rehydrated: true })
         })
     }

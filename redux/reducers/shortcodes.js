@@ -1,9 +1,11 @@
 import {
     ADD_SHORTCODE_SUCCESS,
     ADD_SHORTCODE_FAILURE,
+    UPDATE_LINKS_INFO,
     CLEAR_HISTORY
 } from '../actions/types';
 
+// TODO: store shortcodes as a list and links w/ shorcodes as their IDs.
 const initialState = {
     list: [],
     error: null
@@ -27,6 +29,18 @@ const shortcodeReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error
+            };
+
+        case UPDATE_LINKS_INFO:
+            console.log(data);
+            return {
+                list: state.list.map( (item, idx) => ({
+                    ...item,
+                    startDate: data[idx].startDate,
+                    lastSeenDate: data[idx].lastSeenDate,
+                    redirectCount: data[idx].redirectCount
+                })),
+                error: null
             };
 
         case CLEAR_HISTORY:
