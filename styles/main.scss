@@ -29,10 +29,15 @@
   color: $primary-text-color;
 }
 
-.text-clear-links-link, .text-url-shortcode {
+.text-clear-history-link, .text-url-shortcode {
   font-size: 16px;
   font-family: 'Roboto-Regular';
   color: $accent-color;
+}
+
+.text-clear-history-link:hover {
+  cursor: pointer;
+  color: $accent-color
 }
 
 .text-url-original {

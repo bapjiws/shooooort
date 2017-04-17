@@ -13,7 +13,7 @@ const ClearHistory = ({ clearHistory }) =>
             Previously shortened by you
         </Col>
         <Col xs={2} md={2}>
-            <a className="text-clear-links-link" onClick={clearHistory}>Clear history</a>
+            <a className="text-clear-history-link" onClick={clearHistory}>Clear history</a>
         </Col>
         <Col xs={2} md={2}></Col>
         <Col xs={2} md={2}></Col>
