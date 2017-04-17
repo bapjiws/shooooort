@@ -87,7 +87,7 @@ module.exports = {
     devtool: 'source-map', // TODO: disable in production
 
     devServer: {
-        hot: true, // <-- Enables HMR in webpack-dev-server and in libs running in the browser
-        contentBase: './src'
+        hot: true//, // <-- Enables HMR in webpack-dev-server and in libs running in the browser
+        // contentBase: './src'
     }
 };

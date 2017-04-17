@@ -14,7 +14,7 @@ class LinkList extends Component {
     render() {
         const { linksData } = this.props;
         return <div>
-            <Row>
+            <Row className="link-list-header">
                 <Col xs={2} md={2}></Col>
                 <Col xs={5} md={5}>
                     LINK
@@ -29,7 +29,7 @@ class LinkList extends Component {
             </Row>
             {
                 Object.keys(linksData).map(key =>
-                    <Row key={key}>
+                    <Row className="link-list-row" key={key}>
                         <Col xs={2} md={2}></Col>
                         <Col xs={5} md={5}>
                             <div><span>shooooort.com/</span><span>{ `${key}` }</span></div>
