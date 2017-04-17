@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
     ADD_LINKS_DATA_ENTRY_SUCCESS,
     ADD_LINKS_DATA_ENTRY_FAILURE,
-    UPDATE_LINKS_DATA,
+    UPDATE_LINKS_DATA_SUCCESS,
+    UPDATE_LINKS_DATA_FAILURE,
     CLEAR_LINKS_DATA
 } from '../actions/types';
 
@@ -62,12 +63,13 @@ export const fetchLinksInfo = () => {
                         ...responseItem.data
                     };
                 });
-                dispatch(updateLinksInfo(data));
-            });
+                dispatch(updateLinksDataSuccess(data));
+            })
+            .catch(error => dispatch(updateLinksDataFailure(error)));
     }
 };
 
-// TODO: implement and handle UPDATE_LINKS_INFO_FAILURE action
-export const updateLinksInfo = data => ({type: UPDATE_LINKS_DATA, data});
+export const updateLinksDataSuccess = data => ({type: UPDATE_LINKS_DATA_SUCCESS, data});
+export const updateLinksDataFailure = error => ({type: UPDATE_LINKS_DATA_FAILURE, error});
 
 export const clearHistory = () => ({type: CLEAR_LINKS_DATA});

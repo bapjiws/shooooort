@@ -1,7 +1,7 @@
 import {
     ADD_LINKS_DATA_ENTRY_SUCCESS,
     ADD_LINKS_DATA_ENTRY_FAILURE,
-    UPDATE_LINKS_DATA,
+    UPDATE_LINKS_DATA_SUCCESS,
     CLEAR_LINKS_DATA
 } from '../actions/types';
 
@@ -24,6 +24,7 @@ const linksDataReducer = (state = initialState, action) => {
              redirectCount
         }
     }
+    // TODO: Learn TypeScript :)
     */
 
     switch (type) {
@@ -42,10 +43,16 @@ const linksDataReducer = (state = initialState, action) => {
                 error
             };
 
-        case UPDATE_LINKS_DATA:
+        case UPDATE_LINKS_DATA_SUCCESS:
             return {
                 data: data,
                 error: null
+            };
+
+        case UPDATE_LINKS_DATA_FAILURE:
+            return {
+                ...state,
+                error
             };
 
         case CLEAR_LINKS_DATA:

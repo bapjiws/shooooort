@@ -5,7 +5,7 @@ import linksDataReducer from '../redux/reducers/linksData';
 
 import {
     ADD_LINKS_DATA_ENTRY_SUCCESS,
-    UPDATE_LINKS_DATA,
+    UPDATE_LINKS_DATA_SUCCESS,
     CLEAR_LINKS_DATA
 } from '../redux/actions/types';
 
@@ -67,7 +67,7 @@ test('should update the entire data object with stats on links', t => {
         error: null
     };
     const action = {
-        type: UPDATE_LINKS_DATA,
+        type: UPDATE_LINKS_DATA_SUCCESS,
         data: {
             '918dbe': {
                 url: 'http://example.com/1',
