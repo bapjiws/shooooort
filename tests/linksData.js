@@ -4,9 +4,9 @@ import deepFreeze from 'deep-freeze';
 import linksDataReducer from '../redux/reducers/linksData';
 
 import {
-    ADD_SHORTCODE_SUCCESS,
-    UPDATE_LINKS_INFO,
-    CLEAR_HISTORY
+    ADD_LINKS_DATA_ENTRY_SUCCESS,
+    UPDATE_LINKS_DATA,
+    CLEAR_LINKS_DATA
 } from '../redux/actions/types';
 
 test('should add a new entry to the data object with stats on links', t => {
@@ -15,7 +15,7 @@ test('should add a new entry to the data object with stats on links', t => {
         error: null
     };
     const action = {
-        type: ADD_SHORTCODE_SUCCESS,
+        type: ADD_LINKS_DATA_ENTRY_SUCCESS,
         shortcode: '918dbe',
         data: {
             '918dbe': {
@@ -67,7 +67,7 @@ test('should update the entire data object with stats on links', t => {
         error: null
     };
     const action = {
-        type: UPDATE_LINKS_INFO,
+        type: UPDATE_LINKS_DATA,
         data: {
             '918dbe': {
                 url: 'http://example.com/1',
@@ -142,7 +142,7 @@ test('should erase the entire data object with stats on links', t => {
         error: null
     };
     const action = {
-        type: CLEAR_HISTORY
+        type: CLEAR_LINKS_DATA
     };
     const linksDataAfter = {
         data: {},

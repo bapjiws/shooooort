@@ -1,8 +1,8 @@
 import {
-    ADD_SHORTCODE_SUCCESS,
-    ADD_SHORTCODE_FAILURE,
-    UPDATE_LINKS_INFO,
-    CLEAR_HISTORY
+    ADD_LINKS_DATA_ENTRY_SUCCESS,
+    ADD_LINKS_DATA_ENTRY_FAILURE,
+    UPDATE_LINKS_DATA,
+    CLEAR_LINKS_DATA
 } from '../actions/types';
 
 const initialState = {
@@ -28,7 +28,7 @@ const linksDataReducer = (state = initialState, action) => {
 
     switch (type) {
 
-        case ADD_SHORTCODE_SUCCESS:
+        case ADD_LINKS_DATA_ENTRY_SUCCESS:
             const newData = { ...state.data };
             newData[shortcode] = data[shortcode];
             return {
@@ -36,19 +36,19 @@ const linksDataReducer = (state = initialState, action) => {
                 error: null
             };
 
-        case ADD_SHORTCODE_FAILURE:
+        case ADD_LINKS_DATA_ENTRY_FAILURE:
             return {
                 ...state,
                 error
             };
 
-        case UPDATE_LINKS_INFO:
+        case UPDATE_LINKS_DATA:
             return {
                 data: data,
                 error: null
             };
 
-        case CLEAR_HISTORY:
+        case CLEAR_LINKS_DATA:
             return initialState;
 
         default:
