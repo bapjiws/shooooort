@@ -36,8 +36,7 @@ class Headline extends Component {
 
     render() {
         return <Row className="user-input flex-cross-axis-align-center">
-            <Col xs={2} md={2}></Col>
-            <Col xs={6} md={6}>
+            <Col md={9}>
                 {/*TODO: add simple validation: links should start with http:// or https://*/}
                 <form>
                     <FormControl
@@ -51,7 +50,7 @@ class Headline extends Component {
                     />
                 </form>
             </Col>
-            <Col xs={2} md={2}>
+            <Col className="text-align-end" md={3}>
                 <Button
                     className={this.state.input ? "button-with-input" : "button-no-input"}
                     disabled={this.state.input === ''}
@@ -59,7 +58,6 @@ class Headline extends Component {
                 >
                     Shorten this link
                 </Button></Col>
-            <Col xs={2} md={2}></Col>
         </Row>
     }
 }

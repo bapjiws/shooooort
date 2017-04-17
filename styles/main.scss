@@ -64,10 +64,16 @@
   align-items: center;
 }
 
+.row {
+  margin-right: 10em;
+  margin-left: 10em;
+}
+
 // TODO: get rid of this one
 .row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
+  border: 2px solid red;
 }
 
 .headline, .user-input {
@@ -102,9 +108,11 @@
 .button-no-input, button:disabled.button-no-input, button:disabled.button-no-input:hover {
   background-color: $disabled-button-background;
   color: $disabled-button-text-color;
+  width: 12em;
 }
 
 .button-with-input, button:hover.button-with-input {
   background-color: $accent-color;
   color: white;
+  width: 12em;
 }

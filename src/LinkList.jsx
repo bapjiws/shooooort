@@ -15,33 +15,29 @@ class LinkList extends Component {
         const { linksData } = this.props;
         return <div>
             <Row className="link-list-header">
-                <Col xs={2} md={2}></Col>
-                <Col className="text-table-heading" xs={5} md={5}>
+                <Col className="text-table-heading" md={8}>
                     LINK
                 </Col>
-                <Col className="text-table-heading text-align-center" xs={1} md={1}>
+                <Col className="text-table-heading text-align-center" md={2}>
                     VISITS
                 </Col>
-                <Col className="text-table-heading text-align-center" xs={2} md={2}>
+                <Col className="text-table-heading text-align-center" md={2}>
                     LAST VISITED
                 </Col>
-                <Col xs={2} md={2}></Col>
             </Row>
             {
                 Object.keys(linksData).map(key =>
                     <Row className="link-list-row flex-cross-axis-align-center" key={key}>
-                        <Col xs={2} md={2}></Col>
-                        <Col xs={5} md={5}>
+                        <Col md={8}>
                             <div><span className="text-url-body">shooooort.com/</span><span className="text-url-shortcode">{ `${key}` }</span></div>
                             <div className="text-url-original">{ linksData[key].url }</div>
                         </Col>
-                        <Col className="text-data text-align-center" xs={1} md={1}>
+                        <Col className="text-data text-align-center" md={2}>
                             { linksData[key].redirectCount }
                         </Col>
-                        <Col className="text-data text-align-center" xs={2} md={2}>
+                        <Col className="text-data text-align-center" md={2}>
                             { <TimeAgo date={linksData[key].lastSeenDate} /> }
                         </Col>
-                        <Col xs={2} md={2}></Col>
                     </Row>
                 )
             }

@@ -8,15 +8,12 @@ import { clearHistory } from '../redux/actions/linksData';
 // TODO: check Navbar.Link component
 const ClearHistory = ({ clearHistory }) =>
     <Row className="clear-history flex-cross-axis-align-baseline">
-        <Col xs={2} md={2}></Col>
-        <Col className="text-section-heading" xs={4} md={4}>
+        <Col className="text-section-heading" md={6}>
             Previously shortened by you
         </Col>
-        <Col xs={2} md={2}>
+        <Col md={2}>
             <a className="text-clear-history-link" onClick={clearHistory}>Clear history</a>
         </Col>
-        <Col xs={2} md={2}></Col>
-        <Col xs={2} md={2}></Col>
     </Row>;
 
 export default connect(
