@@ -49,11 +49,11 @@ class UserInput extends Component {
     getValidationState = () => {
         const input = this.state.input;
         if (!input) return;
-         return input.substring(0,7) === 'http://' || input.substring(0, 8) === 'https://' ? 'success' : 'error';
+        return inputIsValid(input);
     };
 
     render() {
-        const inputIsValid = this.state.inputIsValid;
+        const { input, inputIsValid } = this.state;
 
         return <Row className="user-input">
             <Col md={9}>
@@ -71,16 +71,16 @@ class UserInput extends Component {
                             inputRef={ref => this.form = ref}
                         />
                         <FormControl.Feedback />
-                        { !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
+                        { input && !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
                     </FormGroup>
                 </form>
             </Col>
             <Col className="padding-left-button" md={3}>
                 <Button
-                    className={inputIsValid ?
+                    className={input && inputIsValid ?
                         "button-with-input text-button-with-input width-button-with-input" :
                         "button-no-input text-button-no-input width-button-no-input"}
-                    disabled={!inputIsValid}
+                    disabled={!input || !inputIsValid}
                     onClick={this.handleCLick}
                 >
                     Shorten this link
