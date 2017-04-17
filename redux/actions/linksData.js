@@ -8,19 +8,19 @@ import {
     CLEAR_LINKS_DATA
 } from '../actions/types';
 
-// Our proxy server -- mimics all the routes exactly so that it can be substituted w/ a CORS-supporting server.
-axios.defaults.baseURL = process.env.PROXY;
-
-axios.defaults.headers.get['Content-Type'] = 'application/json';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+// // Our proxy server -- mimics all the routes exactly so that it can be substituted w/ a CORS-supporting server.
+// axios.defaults.baseURL = process.env.PROXY;
+//
+// axios.defaults.headers.get['Content-Type'] = 'application/json';
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const addShortcodeSuccess = (shortcode, data) => ({type: ADD_LINKS_DATA_ENTRY_SUCCESS, shortcode, data});
 export const addShortcodeFailure = error => ({type: ADD_LINKS_DATA_ENTRY_FAILURE, error});
 
 export const shortenLink = url => {
     // TODO: will need to pass an instance of axios as a third argument if we have several action files.
-    return (dispatch, getState) => { // , { axios }
-        axios({
+    return (dispatch, getState, { axiosInstance }) => {
+        axiosInstance({
             method: 'post',
             url: '/shorten',
             data: { url }
@@ -40,7 +40,7 @@ export const shortenLink = url => {
 };
 
 export const getShortcodeStats = shortcode => {
-    return axios({
+    return (dispatch, getState, { axiosInstance }) => axiosInstance({
         method: 'get',
         url: `/${shortcode}/stats`
     })
