@@ -80,6 +80,10 @@
   text-align: end;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 // TODO: since color prop doesn't do anything, probably only need only one directive.
 .form-no-input {
   background-color: $light-background;
