@@ -49,7 +49,7 @@ class UserInput extends Component {
     getValidationState = () => {
         const input = this.state.input;
         if (!input) return;
-        return inputIsValid(input);
+        return inputIsValid(input) ? 'success' : 'error';
     };
 
     render() {
