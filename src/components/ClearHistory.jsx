@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Row, Col } from 'react-bootstrap/lib';
 
-import { clearHistory } from '../redux/actions/linksData';
+import { clearHistory } from '../../redux/actions/linksData';
 
 // TODO: check Navbar.Link component
 const ClearHistory = ({ clearHistory }) =>

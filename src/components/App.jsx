@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/main';
+import '../../styles/main';
 
 import { Grid } from 'react-bootstrap/lib';
 

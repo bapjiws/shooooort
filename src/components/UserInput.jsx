@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Row, Col, Button, FormControl } from 'react-bootstrap/lib';
 
-import { shortenLink } from '../redux/actions/linksData';
+import { shortenLink } from '../../redux/actions/linksData';
 
 class Headline extends Component {
     constructor(props) {

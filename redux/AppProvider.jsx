@@ -4,7 +4,7 @@ import { persistStore } from 'redux-persist';
 import localForage from 'localforage';
 
 import configureStore from './store/configureStore';
-import App from '../src/App';
+import App from '../src/components/App';
 
 const store = configureStore();
 

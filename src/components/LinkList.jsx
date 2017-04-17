@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TimeAgo from 'react-timeago';
 import { Row, Col } from 'react-bootstrap/lib';
 
-import { fetchLinksInfo } from '../redux/actions/linksData';
+import { fetchLinksInfo } from '../../redux/actions/linksData';
 
 class LinkList extends Component {
     componentDidMount() {
