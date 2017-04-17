@@ -13,7 +13,7 @@ axios.defaults.baseURL = process.env.PROXY;
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-export const addShortcodeSuccess = data => ({type: ADD_SHORTCODE_SUCCESS, data});
+export const addShortcodeSuccess = (shortcode, data) => ({type: ADD_SHORTCODE_SUCCESS, shortcode, data});
 export const addShortcodeFailure = error => ({type: ADD_SHORTCODE_FAILURE, error});
 
 export const shortenLink = url => {
@@ -24,13 +24,16 @@ export const shortenLink = url => {
             url: '/shorten',
             data: { url }
         })
-            .then(response => dispatch(addShortcodeSuccess({
-                shortcode: response.data.shortcode,
-                url,
-                startDate: new Date(),
-                lastSeenDate: new Date(),
-                redirectCount: 0
-            })))
+            .then(response => {
+                let data = {};
+                data[response.data.shortcode] = {
+                    url,
+                    startDate: new Date(),
+                    lastSeenDate: new Date(),
+                    redirectCount: 0
+                };
+                dispatch(addShortcodeSuccess(response.data.shortcode, data));
+            })
             .catch(error => dispatch(addShortcodeFailure(error)));
     }
 };
@@ -44,13 +47,23 @@ export const getShortcodeStats = shortcode => {
 
 export const fetchLinksInfo = () => {
     return (dispatch, getState) => {
-        // TODO: store shortcodes as a list and links w/ shorcodes as their IDs.
-        const shortcodes = getState().shortcodes.list.map(item => item.shortcode);
-        console.log(shortcodes);
+        const linksData = getState().linksData.data;
 
-        axios.all(shortcodes.map(shortcode => getShortcodeStats(shortcode)) )
-            .then(response => dispatch(updateLinksInfo(response.map(responseItem => responseItem.data))));
+        const data = {};
+        axios.all(Object.keys(linksData).map(key => getShortcodeStats(key)))
+            .then(response => {
 
+                response.forEach(responseItem => {
+                    // Since the server does not return the shortcodes (i.e., our IDs) and we update the entire
+                    // linksData.data state slice, we'll need to extract them from response.config.url pieces.
+                    const shortcode = /.*\/([\d\w]+)\/stats$/g.exec(responseItem.config.url)[1];
+                    data[shortcode] = {
+                        url: linksData[shortcode].url,
+                        ...responseItem.data
+                    };
+                });
+                dispatch(updateLinksInfo(data));
+            });
     }
 };
 

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import shortcodeReducer from './shortcodes';
+import linksDataReducer from './linksData';
 
 const rootReducer = combineReducers({
-    shortcodes: shortcodeReducer
+    linksData: linksDataReducer
 });
 
 export default rootReducer

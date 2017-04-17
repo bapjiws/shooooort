@@ -24,7 +24,7 @@ export default class AppProvider extends Component {
     }
 
     render() {
-        return  this.state.rehydrated &&
+        return this.state.rehydrated &&
             <Provider store={store}>
                 <App />
             </Provider>

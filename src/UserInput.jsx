@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Row, Col, Button, FormControl } from 'react-bootstrap/lib';
 
-import { shortenLink, getShortcodeStats } from '../redux/actions/shortcodes';
+import { shortenLink } from '../redux/actions/linksData';
 
 class Headline extends Component {
     constructor(props) {
@@ -56,7 +56,6 @@ class Headline extends Component {
                 <Button
                     className={this.state.input ? "button-with-input" : "button-no-input"}
                     disabled={this.state.input === ''}
-                    //onClick={() => getShortcodeStats(this.state.input)}
                     onClick={this.handleCLick}
                 >
                     Shorten this link

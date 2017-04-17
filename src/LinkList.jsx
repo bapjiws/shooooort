@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TimeAgo from 'react-timeago';
 import { Row, Col } from 'react-bootstrap/lib';
 
-import { fetchLinksInfo } from '../redux/actions/shortcodes';
+import { fetchLinksInfo } from '../redux/actions/linksData';
 
 class LinkList extends Component {
     componentDidMount() {
@@ -12,7 +12,7 @@ class LinkList extends Component {
     }
 
     render() {
-        const { links } = this.props;
+        const { linksData } = this.props;
         return <div>
             <Row>
                 <Col xs={2} md={2}></Col>
@@ -28,18 +28,18 @@ class LinkList extends Component {
                 <Col xs={2} md={2}></Col>
             </Row>
             {
-                links.map(link =>
-                    <Row key={link.shortcode}>
+                Object.keys(linksData).map(key =>
+                    <Row key={key}>
                         <Col xs={2} md={2}></Col>
                         <Col xs={5} md={5}>
-                            <div><span>shooooort.com/</span><span>{ `${link.shortcode}` }</span></div>
-                            <div>{ link.url }</div>
+                            <div><span>shooooort.com/</span><span>{ `${key}` }</span></div>
+                            <div>{ linksData[key].url }</div>
                         </Col>
                         <Col xs={1} md={1}>
-                            { link.redirectCount }
+                            { linksData[key].redirectCount }
                         </Col>
                         <Col xs={2} md={2}>
-                            { <TimeAgo date={link.lastSeenDate} /> }
+                            { <TimeAgo date={linksData[key].lastSeenDate} /> }
                         </Col>
                         <Col xs={2} md={2}></Col>
                     </Row>
@@ -51,7 +51,7 @@ class LinkList extends Component {
 
 export default connect(
     state => ({
-        links: state.shortcodes.list
+        linksData: state.linksData.data
     }),
     { fetchLinksInfo }
 )(LinkList);

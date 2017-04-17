@@ -5,23 +5,34 @@ import {
     CLEAR_HISTORY
 } from '../actions/types';
 
-// TODO: store shortcodes as a list and links w/ shorcodes as their IDs.
 const initialState = {
-    list: [],
+    // TODO: probably makes sense to store shortcodes' list to avoid using Object.keys(linksData).map, but that would mean storing and managing duplicate data.
+    data: {},
     error: null
 };
 
 // TODO: test for purity with deep freeze.
 const shortcodeReducer = (state = initialState, action) => {
-    const { type, data, error } = action;
+    const { type, shortcode, data, error } = action;
+
+    /*
+    data always looks like this: {
+        shortcode: {
+             url,
+             startDate,
+             lastSeenDate,
+             redirectCount
+        }
+    }
+    */
 
     switch (type) {
 
         case ADD_SHORTCODE_SUCCESS:
-            // let newData = state.data; // TODO: most likely need { ...state.data }, test it.
-            // newData[shortcode] = { url };
+            const newData = { ...state.data };
+            newData[shortcode] = data[shortcode];
             return {
-                list: [...state.list, data],
+                data: newData,
                 error: null
             };
 
@@ -32,14 +43,8 @@ const shortcodeReducer = (state = initialState, action) => {
             };
 
         case UPDATE_LINKS_INFO:
-            console.log(data);
             return {
-                list: state.list.map( (item, idx) => ({
-                    ...item,
-                    startDate: data[idx].startDate,
-                    lastSeenDate: data[idx].lastSeenDate,
-                    redirectCount: data[idx].redirectCount
-                })),
+                data: data,
                 error: null
             };
 
