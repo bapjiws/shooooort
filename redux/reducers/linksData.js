@@ -12,7 +12,7 @@ const initialState = {
 };
 
 // TODO: test for purity with deep freeze.
-const shortcodeReducer = (state = initialState, action) => {
+const linksDataReducer = (state = initialState, action) => {
     const { type, shortcode, data, error } = action;
 
     /*
@@ -57,4 +57,4 @@ const shortcodeReducer = (state = initialState, action) => {
 
 };
 
-export default shortcodeReducer;
+export default linksDataReducer;

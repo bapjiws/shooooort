@@ -26,8 +26,8 @@ module.exports = {
                     path.join(__dirname, "/redux")
                 ],
                 use: [{
-                    loader: 'babel-loader',
-                    options: { presets: ['react', 'es2015', 'stage-0'] }
+                    loader: 'babel-loader'
+                    // options: { presets: ['react', 'es2015', 'stage-0'] } --> babel-tape-runner only runs w/ .babelrc
                 }]
             },
 
