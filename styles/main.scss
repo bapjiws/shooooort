@@ -15,19 +15,19 @@
   font-size: 47px;
   font-family: 'Montserrat-Regular';
   text-decoration: underline;
-  color: $accent-color;
+  color: $accent;
 }
 
 .text-normal {
   font-size: 16px;
   font-family: 'Roboto-Light';
-  color: $secondary-text-color;
+  color: $secondary-text;
 }
 
 .text-button-no-input, button:hover.text-button-no-input {
   font-size: 16px;
   font-family: 'Roboto-Regular';
-  color: $disabled-button-text-color;
+  color: $disabled-button-text;
 }
 
 .text-button-with-input, button:hover.text-button-with-input {
@@ -39,42 +39,42 @@
 .text-section-heading {
   font-size: 22px;
   font-family: 'Roboto-Light';
-  color: $primary-text-color;
+  color: $primary-text;
 }
 
 .text-url-body, .text-data {
   font-size: 16px;
   font-family: 'Roboto-Regular';
-  color: $primary-text-color;
+  color: $primary-text;
 }
 
 .text-clear-history-link, .text-url-shortcode {
   font-size: 16px;
   font-family: 'Roboto-Regular';
-  color: $accent-color;
+  color: $accent;
 }
 
 .text-clear-history-link:hover {
   cursor: pointer;
-  color: $accent-color
+  color: $accent
 }
 
 .text-url-original {
   font-size: 16px;
   font-family: 'Roboto-Regular';
-  color: $unimportant-text-color;
+  color: $unimportant-text;
 }
 
 .text-table-heading {
   font-size: 14px;
   font-family: 'Roboto-Regular';
-  color: $secondary-text-color;
+  color: $secondary-text;
 }
 
 .text-form-control {
   font-size: 16px;
   font-family: 'Roboto-Regular';
-  color: $primary-text-color;
+  color: $primary-text;
 }
 /*TEXT FORMATS*/
 
@@ -133,7 +133,7 @@
 }
 
 .button-with-input, button:hover.button-with-input {
-  background-color: $accent-color;
+  background-color: $accent;
 }
 /*BACKGROUND COLORS*/
 
