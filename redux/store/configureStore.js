@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore } from 'redux';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
+import { autoRehydrate } from 'redux-persist';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 const configureStore = () => {
@@ -10,7 +11,8 @@ const configureStore = () => {
         rootReducer,
         // initialState,
         composeWithDevTools(
-            applyMiddleware(...middlewares)
+            applyMiddleware(...middlewares),
+            autoRehydrate()
         )
     );
 };
