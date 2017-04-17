@@ -15,7 +15,6 @@ class Headline extends Component {
     }
 
     handleChange = event => {
-        console.log('event:', event.target.value);
         this.setState({input: event.target.value});
     };
 

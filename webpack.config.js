@@ -14,8 +14,16 @@ const envVars = Object.keys(dotEnvVars).
         }
     });
 
+/*On how to use Hot Module Replacement + React Hot Loader, see:
+ https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96#.npgb2r5nn
+ http://gaearon.github.io/react-hot-loader/getstarted/*/
 module.exports = {
-    entry: './src/index.js',
+    // Dev entry.
+    entry: [
+        'webpack-dev-server/client?http://localhost:8080', // <-- Enables websocket connection (needs url and port)
+        'webpack/hot/only-dev-server', // <-- to perform HMR in the browser; "only" prevents reload on syntax errors
+        './src/index.js' // The appʼs entry point
+    ],
 
     module: {
         rules: [
@@ -25,10 +33,7 @@ module.exports = {
                     path.join(__dirname, "/src"),
                     path.join(__dirname, "/redux")
                 ],
-                use: [{
-                    loader: 'babel-loader'
-                    // options: { presets: ['react', 'es2015', 'stage-0'] } --> babel-tape-runner only runs w/ .babelrc
-                }]
+                use: ['react-hot-loader', 'babel-loader'] // inProductionMode ? ['babel-loader'] :
             },
 
             {
@@ -73,8 +78,16 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/src/index.html')
         }),
-        new ExtractTextPlugin('main.css')
+        new ExtractTextPlugin('main.css'),
+
+        // For dev purposes only
+        new webpack.HotModuleReplacementPlugin() // <-- To generate hot update chunks
     ],
 
-    devtool: 'source-map' // TODO: disable in production
+    devtool: 'source-map', // TODO: disable in production
+
+    devServer: {
+        hot: true, // <-- Enables HMR in webpack-dev-server and in libs running in the browser
+        contentBase: './src'
+    }
 };
