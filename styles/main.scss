@@ -1,4 +1,7 @@
-// If decide to abandon React Bootstrap, check: http://www.bootply.com/127827# or https://jsfiddle.net/nV3Ua/1821/
+// Use this to debug the layout.
+.row > [class*='col-'] {
+  border: 2px solid red;
+}
 
 @import 'mixins';
 @import 'colors';
@@ -54,6 +57,12 @@
   color: $secondary-text-color;
 }
 
+.text-form-control {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: $primary-text-color;
+}
+
 .flex-cross-axis-align-baseline {
   display: flex;
   align-items: baseline;
@@ -67,13 +76,6 @@
 .row {
   margin-right: 10em;
   margin-left: 10em;
-}
-
-// TODO: get rid of this one
-.row > [class*='col-'] {
-  //display: flex;
-  //flex-direction: column;
-  border: 2px solid red;
 }
 
 .headline, .user-input {
@@ -94,25 +96,28 @@
   text-align: center;
 }
 
-// TODO: since color prop doesn't do anything, probably only need only one directive.
-.form-no-input {
+.form-control {
   background-color: $light-background;
-  color: $secondary-text-color; // can't change placeholder's color like so.
 }
 
-.form-with-input {
-  background-color: $light-background;
-  color: $primary-text-color; // can't change placeholder's color like so.
+.text-button-no-input {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: $disabled-button-text-color;
+}
+
+.text-button-with-input {
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: white;
 }
 
 .button-no-input, button:disabled.button-no-input, button:disabled.button-no-input:hover {
   background-color: $disabled-button-background;
-  color: $disabled-button-text-color;
   width: 12em;
 }
 
 .button-with-input, button:hover.button-with-input {
   background-color: $accent-color;
-  color: white;
   width: 12em;
 }

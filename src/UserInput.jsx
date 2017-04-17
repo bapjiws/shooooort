@@ -40,7 +40,7 @@ class Headline extends Component {
                 {/*TODO: add simple validation: links should start with http:// or https://*/}
                 <form>
                     <FormControl
-                        className={this.state.input ? "form-with-input" : "form-no-input"}
+                        className="text-form-control"
                         type="text"
                         value={this.state.input}
                         placeholder="Paste the link you want to shorten here"
@@ -52,7 +52,7 @@ class Headline extends Component {
             </Col>
             <Col className="text-align-end" md={3}>
                 <Button
-                    className={this.state.input ? "button-with-input" : "button-no-input"}
+                    className={this.state.input ? "button-with-input text-button-with-input" : "button-no-input text-button-no-input"}
                     disabled={this.state.input === ''}
                     onClick={this.handleCLick}
                 >
