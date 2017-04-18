@@ -41,9 +41,10 @@ class LinkList extends Component {
                     <Row className="link-list-row flex-cross-axis-align-center" key={key}>
                         <Col md={8}>
                             <CopyToClipboard text={`shooooort.com/${key}`}>
-                                <div>
+                                <div className="shortcode-url-box">
                                     <span className="text-url-body">shooooort.com/</span>
                                     <span className="text-url-shortcode">{ `${key}` }</span>
+                                    <span className="shortcode-copy text-url-shortcode">Click to copy this link</span>
                                 </div>
                             </ CopyToClipboard>
 

@@ -147,10 +147,23 @@
 .width-button-no-input, .width-button-with-input {
   width: 10em;
 }
+
+.shortcode-url-box {
+  width: 25em;
+}
 /*SIZES*/
 
-/*MISC*/
-.row > [class*='col-'] > div > span:hover {
+/*SHOW'N'HIDE*/
+.row > [class*='col-'] > div.shortcode-url-box:hover {
   cursor: pointer;
 }
-/*MISC*/
+
+.shortcode-copy {
+  display: none;
+}
+
+.row > [class*='col-'] > div.shortcode-url-box:hover .shortcode-copy {
+  display: inline;
+  margin-left: 2em;
+}
+/*SHOW'N'HIDE*/
