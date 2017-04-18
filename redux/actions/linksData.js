@@ -8,12 +8,6 @@ import {
     CLEAR_LINKS_DATA
 } from '../actions/types';
 
-// // Our proxy server -- mimics all the routes exactly so that it can be substituted w/ a CORS-supporting server.
-// axios.defaults.baseURL = process.env.PROXY;
-//
-// axios.defaults.headers.get['Content-Type'] = 'application/json';
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
-
 export const addShortcodeSuccess = (shortcode, data) => ({type: ADD_LINKS_DATA_ENTRY_SUCCESS, shortcode, data});
 export const addShortcodeFailure = error => ({type: ADD_LINKS_DATA_ENTRY_FAILURE, error});
 
@@ -39,21 +33,16 @@ export const shortenLink = url => {
     }
 };
 
-export const getShortcodeStats = shortcode => {
-    return (dispatch, getState, { axiosInstance }) => axiosInstance({
-        method: 'get',
-        url: `/${shortcode}/stats`
-    })
-};
-
 export const fetchLinksInfo = () => {
-    return (dispatch, getState) => {
+    return (dispatch, getState, { axiosInstance }) => {
         const linksData = getState().linksData.data;
 
         const data = {};
-        axios.all(Object.keys(linksData).map(key => getShortcodeStats(key)))
+        axios.all(Object.keys(linksData).map(key => axiosInstance({
+            method: 'get',
+            url: `/${key}/stats`
+        })))
             .then(response => {
-
                 response.forEach(responseItem => {
                     // Since the server does not return the shortcodes (i.e., our IDs) and we update the entire
                     // linksData.data state slice, we'll need to extract them from response.config.url pieces.
