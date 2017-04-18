@@ -148,3 +148,9 @@
   width: 10em;
 }
 /*SIZES*/
+
+/*MISC*/
+.row > [class*='col-'] > div > span:hover {
+  cursor: pointer;
+}
+/*MISC*/
