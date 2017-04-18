@@ -67,7 +67,6 @@ module.exports = {
         './src/index.js' // The appʼs entry point
     ],
 
-    // TODO: create a server to serve the built output.
     output: {
         path: path.join(__dirname, 'build'),
         filename: inProductionMode ? '[name].[chunkhash].js' : 'bundle.js'
