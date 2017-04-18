@@ -32,7 +32,7 @@ if (inProductionMode) {
         This and webpack -p give an error:
         ERROR in bundle.4d167dd3c295e3f7f263.js from UglifyJs
         Unexpected token: punc ()) [bundle.4d167dd3c295e3f7f263.js:26427,26]
-        No time to figure this out for now.
+        TODO: Figure this out.
         */
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
@@ -64,7 +64,7 @@ module.exports = {
     } : [
         'webpack-dev-server/client?http://localhost:8080', // <-- Enables websocket connection (needs url and port)
         'webpack/hot/only-dev-server', // <-- to perform HMR in the browser; "only" prevents reload on syntax errors
-        './src/index.js' // The appʼs entry point
+        './src/index.js' // <-- The appʼs entry point
     ],
 
     output: {

@@ -5,7 +5,6 @@ import { Row, Col } from 'react-bootstrap/lib';
 
 import { clearHistory } from '../../redux/actions/linksData';
 
-// TODO: check Navbar.Link component
 const ClearHistory = ({ clearHistory }) =>
     <Row className="clear-history flex-cross-axis-align-baseline">
         <Col className="text-section-heading" md={6}>

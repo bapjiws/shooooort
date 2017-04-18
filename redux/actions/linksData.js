@@ -12,7 +12,6 @@ export const addShortcodeSuccess = (shortcode, data) => ({type: ADD_LINKS_DATA_E
 export const addShortcodeFailure = error => ({type: ADD_LINKS_DATA_ENTRY_FAILURE, error});
 
 export const shortenLink = url => {
-    // TODO: will need to pass an instance of axios as a third argument if we have several action files.
     return (dispatch, getState, { axiosInstance }) => {
         axiosInstance({
             method: 'post',

@@ -12,7 +12,6 @@ const initialState = {
     error: null
 };
 
-// TODO: test for purity with deep freeze.
 const linksDataReducer = (state = initialState, action) => {
     const { type, shortcode, data, error } = action;
 
