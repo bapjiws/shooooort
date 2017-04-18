@@ -147,23 +147,16 @@
 .width-button-no-input, .width-button-with-input {
   width: 10em;
 }
-
-.shortcode-url-box {
-  width: 26em;
-}
 /*SIZES*/
 
 /*SHOW'N'HIDE*/
-.row > [class*='col-'] > div.shortcode-url-box:hover {
+.row > [class*='col-'] > div > span {
   cursor: pointer;
 }
 
-.shortcode-copy {
-  display: none;
-}
-
-.row > [class*='col-'] > div.shortcode-url-box:hover .shortcode-copy {
-  display: inline;
+.row > [class*='col-'] > div > span.text-url-body:hover + span.text-url-shortcode::after,
+.row > [class*='col-'] > div > span.text-url-shortcode:hover::after {
+  content: "Click to copy this link";
   margin-left: 2em;
 }
 /*SHOW'N'HIDE*/
