@@ -11,8 +11,6 @@ const axiosInstance = getAxiosInstance();
 const configureStore = () => {
     const middlewares = [thunk.withExtraArgument({ axiosInstance })];
 
-    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
-
     return createStore(
         rootReducer,
         // initialState,

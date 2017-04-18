@@ -48,6 +48,7 @@
     "build": "npm run clean && NODE_ENV=production webpack",
     "clean": "rimraf build",
     "dev": "webpack-dev-server",
+    "prod": "NODE_ENV=production node server.js",
     "proxy": "nodemon proxy.js",
     "test": "babel-tape-runner tests/linksData.js | faucet"
   }
