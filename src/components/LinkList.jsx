@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import TimeAgo from 'react-timeago';
 import { Row, Col } from 'react-bootstrap/lib';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 import { fetchLinksInfo } from '../../redux/actions/linksData';
 
@@ -39,7 +40,10 @@ class LinkList extends Component {
                 Object.keys(linksData).map(key =>
                     <Row className="link-list-row flex-cross-axis-align-center" key={key}>
                         <Col md={8}>
-                            <div><span className="text-url-body">shooooort.com/</span><span className="text-url-shortcode">{ `${key}` }</span></div>
+                            <CopyToClipboard text={`shooooort.com/${key}`}>
+                                <div><span className="text-url-body">shooooort.com/</span><span className="text-url-shortcode">{ `${key}` }</span></div>
+                            </ CopyToClipboard>
+
                             <div className="text-url-original">{ linksData[key].url }</div>
                         </Col>
                         <Col className="text-data text-align-center" md={1}>
