@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../reducers/rootReducer';
 import thunk from 'redux-thunk';
 import { autoRehydrate } from 'redux-persist';
@@ -11,13 +11,14 @@ const axiosInstance = getAxiosInstance();
 const configureStore = () => {
     const middlewares = [thunk.withExtraArgument({ axiosInstance })];
 
+    console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+
     return createStore(
         rootReducer,
         // initialState,
-        composeWithDevTools(
-            applyMiddleware(...middlewares),
-            autoRehydrate()
-        )
+        process.env.NODE_ENV === 'production' ?
+            compose(applyMiddleware(...middlewares), autoRehydrate()) :
+            composeWithDevTools(applyMiddleware(...middlewares), autoRehydrate())
     );
 };
 
