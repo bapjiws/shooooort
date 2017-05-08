@@ -10,19 +10,17 @@ import { fetchLinksInfo } from '../../redux/actions/linksData';
 class LinkList extends Component {
     componentDidMount() {
         this.props.fetchLinksInfo();
-        this.timerID = setInterval(
-            () => this.props.fetchLinksInfo(),
-            1000
-        );
+        // this.timerID = setInterval(
+        //     () => this.props.fetchLinksInfo(),
+        //     1000
+        // );
     }
 
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.timerID);
+    // }
 
     render() {
-        // TODO: ideally, should only re-render if the incoming data is different -- reselect could be an option.
-
         const { linksData } = this.props;
         return <div>
             <Row className="link-list-header">
