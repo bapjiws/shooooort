@@ -9,7 +9,8 @@ const app = express();
 
 // Couldn't yet find a way to use process.env constructed in Webpack config, need to parse separately.
 const dotEnvVars = require('dotenv').config().parsed;
-const api = dotEnvVars.API;
+const url = dotEnvVars.GOOGLE_URL_SHORTENER_API;
+const key = dotEnvVars.API_KEY;
 
 app.use(bodyParser.json());
 
@@ -21,25 +22,21 @@ app.use((req, res, next) => {
 });
 
 app.get('/:shortcode/stats', (req, res, next) => {
-    request(api + req.url, (error, response, body) => {
+    request(url + req.url, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
 
-        // TODO: res.status(404) will reject the promise on client side and it won't get the {error: "The shortcode cannot be found in the system"} payload
         res.status(response.statusCode).send(error || body);
     });
 });
 
 app.post('/shorten', (req, res, next) => {
-    const url  = api.concat(req.url);
-
-    request.post({url, form: {url: req.body.url}}, (error, response, body) => {
+    request.post({ url, body: { longUrl: req.body.url }, json: true, qs: { key } }, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);
 
-        // TODO: res.status(404) will reject the promise on client side and it won't get the {error: "The shortcode cannot be found in the system"} payload
         res.status(response.statusCode).send(error || body);
     });
 });

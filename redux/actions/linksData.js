@@ -19,6 +19,8 @@ export const shortenLink = url => {
             data: { url }
         })
             .then(response => {
+                console.log('response.data:', response.data);
+
                 let data = {};
                 data[response.data.shortcode] = {
                     url,
