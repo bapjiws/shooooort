@@ -1,5 +1,5 @@
 {
-  "name": "URL Shortener Front-end",
+  "name": "url_shortener_frontend",
   "version": "1.0.0",
   "description": "A URL shortener service that relies on the Google URL Shortener API",
   "main": "index.js",
