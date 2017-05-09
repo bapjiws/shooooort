@@ -22,13 +22,14 @@ export const shortenLink = url => {
                 console.log('response.data:', response.data);
 
                 let data = {};
-                data[response.data.shortcode] = {
+                const id = response.data.id.replace(/https?\:\/\/goo\.gl\//g, '');
+                data[id] = {
                     url,
                     startDate: new Date(),
                     lastSeenDate: new Date(),
                     redirectCount: 0
                 };
-                dispatch(addShortcodeSuccess(response.data.shortcode, data));
+                dispatch(addShortcodeSuccess(id, data));
             })
             .catch(error => dispatch(addShortcodeFailure(error)));
     }

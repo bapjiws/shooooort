@@ -38,9 +38,9 @@ class LinkList extends Component {
                 Object.keys(linksData).map(key =>
                     <Row className="link-list-row flex-cross-axis-align-center" key={key}>
                         <Col md={8}>
-                            <CopyToClipboard text={`shooooort.com/${key}`}>
+                            <CopyToClipboard text={`http://goo.gl/${key}`}>
                                 <div>
-                                    <span className="text-url-body">shooooort.com/</span>
+                                    <span className="text-url-body">http://goo.gl/</span>
                                     <span className="text-url-shortcode">{ `${key}` }</span>
                                 </div>
                             </ CopyToClipboard>
