@@ -48,10 +48,10 @@ class LinkList extends Component {
                             <div className="text-url-original">{ linksData[key].url }</div>
                         </Col>
                         <Col className="text-data text-align-center" md={1}>
-                            { linksData[key].redirectCount }
+                            { linksData[key].visits }
                         </Col>
                         <Col className="text-data text-align-center" md={3}>
-                            { <TimeAgo date={linksData[key].lastSeenDate} live={false} /> }
+                            { <TimeAgo date={linksData[key].lastVisited} live={false} /> }
                         </Col>
                     </Row>
                 )

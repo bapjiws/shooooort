@@ -20,8 +20,8 @@ const linksDataReducer = (state = initialState, action) => {
         shortcode: {
              url,
              startDate,
-             lastSeenDate, // TODO: rename into lastVisited
-             redirectCount // TODO: rename into visits
+             lastVisited,
+             visits
         }
     }
     */

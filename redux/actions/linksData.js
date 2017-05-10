@@ -28,8 +28,8 @@ export const shortenLink = url => {
                 data[id] = {
                     url,
                     startDate: new Date(),
-                    lastSeenDate: new Date(),
-                    redirectCount: 0
+                    lastVisited: new Date(),
+                    visits: 0
                 };
                 dispatch(addShortcodeSuccess(id, data));
             })
@@ -52,8 +52,8 @@ export const fetchLinksInfo = () => {
 
                     data[id] = {
                         ...linksData[id],
-                        redirectCount: responseItem.data.analytics.allTime.shortUrlClicks,
-                        lastSeenDate: responseItem.data.analytics.allTime.shortUrlClicks !== linksData[id].redirectCount ? new Date() : linksData[id].lastSeenDate
+                        visits: responseItem.data.analytics.allTime.shortUrlClicks,
+                        lastVisited: responseItem.data.analytics.allTime.shortUrlClicks !== linksData[id].visits ? new Date() : linksData[id].lastVisited
                     };
                 });
                 dispatch(updateLinksDataSuccess(data));

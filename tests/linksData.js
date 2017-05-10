@@ -23,8 +23,8 @@ test('should add a new entry to the data object with stats on links', t => {
             '918dbe': {
                 url: 'http://example.com',
                 startDate: '2017-04-17T12:26:03.199Z',
-                lastSeenDate: '2017-04-17T12:26:03.199Z',
-                redirectCount: 0
+                lastVisited: '2017-04-17T12:26:03.199Z',
+                visits: 0
             }
         }
     };
@@ -33,8 +33,8 @@ test('should add a new entry to the data object with stats on links', t => {
             '918dbe': {
                 url: 'http://example.com',
                 startDate: '2017-04-17T12:26:03.199Z',
-                lastSeenDate: '2017-04-17T12:26:03.199Z',
-                redirectCount: 0
+                lastVisited: '2017-04-17T12:26:03.199Z',
+                visits: 0
             }
         },
         error: null
@@ -50,14 +50,14 @@ test('should add an error to the data object with stats on links, otherwise leav
             '918dbe': {
                 url: 'http://example.com/1',
                 startDate: '2017-02-17T12:26:03.199Z',
-                lastSeenDate: '2017-02-17T12:26:03.199Z',
-                redirectCount: 0
+                lastVisited: '2017-02-17T12:26:03.199Z',
+                visits: 0
             },
             'e67b': {
                 url: 'http://example.com/3',
                 startDate: '2017-04-17T11:56:08.830Z',
-                lastSeenDate: '2017-04-17T13:17:50.871Z',
-                redirectCount: 0
+                lastVisited: '2017-04-17T13:17:50.871Z',
+                visits: 0
             }
         },
         error: null
@@ -76,14 +76,14 @@ test('should add an error to the data object with stats on links, otherwise leav
             '918dbe': {
                 url: 'http://example.com/1',
                 startDate: '2017-02-17T12:26:03.199Z',
-                lastSeenDate: '2017-02-17T12:26:03.199Z',
-                redirectCount: 0
+                lastVisited: '2017-02-17T12:26:03.199Z',
+                visits: 0
             },
             'e67b': {
                 url: 'http://example.com/3',
                 startDate: '2017-04-17T11:56:08.830Z',
-                lastSeenDate: '2017-04-17T13:17:50.871Z',
-                redirectCount: 0
+                lastVisited: '2017-04-17T13:17:50.871Z',
+                visits: 0
             }
         },
         error: 'A VERY DRAMATIC ERROR ;('
@@ -100,20 +100,20 @@ test('should update the entire data object with stats on links', t => {
             '918dbe': {
                 url: 'http://example.com/1',
                 startDate: '2017-02-17T12:26:03.199Z',
-                lastSeenDate: '2017-02-17T12:26:03.199Z',
-                redirectCount: 0
+                lastVisited: '2017-02-17T12:26:03.199Z',
+                visits: 0
             },
             'abdf6c': {
                 url: 'http://example.com/2',
                 startDate: '2017-03-17T13:37:20.113Z',
-                lastSeenDate: '2017-03-17T13:37:50.795Z',
-                redirectCount: 0
+                lastVisited: '2017-03-17T13:37:50.795Z',
+                visits: 0
             },
             'e67b': {
                 url: 'http://example.com/3',
                 startDate: '2017-04-17T11:56:08.830Z',
-                lastSeenDate: '2017-04-17T13:17:50.871Z',
-                redirectCount: 0
+                lastVisited: '2017-04-17T13:17:50.871Z',
+                visits: 0
             }
         },
         error: null
@@ -124,20 +124,20 @@ test('should update the entire data object with stats on links', t => {
             '918dbe': {
                 url: 'http://example.com/1',
                 startDate: '2017-02-17T12:26:03.199Z',
-                lastSeenDate: '2017-04-17T12:26:03.199Z',
-                redirectCount: 1
+                lastVisited: '2017-04-17T12:26:03.199Z',
+                visits: 1
             },
             'abdf6c': {
                 url: 'http://example.com/2',
                 startDate: '2017-03-17T13:37:20.113Z',
-                lastSeenDate: '2017-04-17T13:37:50.795Z',
-                redirectCount: 2
+                lastVisited: '2017-04-17T13:37:50.795Z',
+                visits: 2
             },
             'e67b': {
                 url: 'http://example.com/3',
                 startDate: '2017-04-17T11:56:08.830Z',
-                lastSeenDate: '2017-04-17T13:17:50.871Z',
-                redirectCount: 3
+                lastVisited: '2017-04-17T13:17:50.871Z',
+                visits: 3
             }
         }
     };
@@ -146,20 +146,20 @@ test('should update the entire data object with stats on links', t => {
             '918dbe': {
                 url: 'http://example.com/1',
                 startDate: '2017-02-17T12:26:03.199Z',
-                lastSeenDate: '2017-04-17T12:26:03.199Z',
-                redirectCount: 1
+                lastVisited: '2017-04-17T12:26:03.199Z',
+                visits: 1
             },
             'abdf6c': {
                 url: 'http://example.com/2',
                 startDate: '2017-03-17T13:37:20.113Z',
-                lastSeenDate: '2017-04-17T13:37:50.795Z',
-                redirectCount: 2
+                lastVisited: '2017-04-17T13:37:50.795Z',
+                visits: 2
             },
             'e67b': {
                 url: 'http://example.com/3',
                 startDate: '2017-04-17T11:56:08.830Z',
-                lastSeenDate: '2017-04-17T13:17:50.871Z',
-                redirectCount: 3
+                lastVisited: '2017-04-17T13:17:50.871Z',
+                visits: 3
             }
         },
         error: null
@@ -175,20 +175,20 @@ test('should erase the entire data object with stats on links', t => {
             '918dbe': {
                 url: 'http://example.com/1',
                 startDate: '2017-02-17T12:26:03.199Z',
-                lastSeenDate: '2017-04-17T12:26:03.199Z',
-                redirectCount: 1
+                lastVisited: '2017-04-17T12:26:03.199Z',
+                visits: 1
             },
             'abdf6c': {
                 url: 'http://example.com/2',
                 startDate: '2017-03-17T13:37:20.113Z',
-                lastSeenDate: '2017-04-17T13:37:50.795Z',
-                redirectCount: 2
+                lastVisited: '2017-04-17T13:37:50.795Z',
+                visits: 2
             },
             'e67b': {
                 url: 'http://example.com/3',
                 startDate: '2017-04-17T11:56:08.830Z',
-                lastSeenDate: '2017-04-17T13:17:50.871Z',
-                redirectCount: 3
+                lastVisited: '2017-04-17T13:17:50.871Z',
+                visits: 3
             }
         },
         error: null
