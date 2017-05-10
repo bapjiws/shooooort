@@ -22,7 +22,9 @@ app.use((req, res, next) => {
 });
 
 app.get('/:shortcode/stats', (req, res, next) => {
-    request(url + req.url, (error, response, body) => {
+    console.log('req:', req.params.shortcode); // TODO: store both longUrl anf shortUrl and use the latter here.
+
+    request.get({ url, qs: { key, shortUrl: `http://goo.gl/${req.params.shortcode}`, projection: 'ANALYTICS_CLICKS' } }, (error, response, body) => {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
         console.log('body:', body);

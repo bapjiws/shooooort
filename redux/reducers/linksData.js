@@ -16,15 +16,14 @@ const linksDataReducer = (state = initialState, action) => {
     const { type, shortcode, data, error } = action;
 
     /*
-    data always looks like this: {
+    data should always look like this: {
         shortcode: {
              url,
              startDate,
-             lastSeenDate,
-             redirectCount
+             lastSeenDate, // TODO: rename into lastVisited
+             redirectCount // TODO: rename into visits
         }
     }
-    // TODO: Learn TypeScript :)
     */
 
     switch (type) {

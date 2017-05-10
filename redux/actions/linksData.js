@@ -22,7 +22,7 @@ export const shortenLink = url => {
                 console.log('response.data:', response.data);
 
                 let data = {};
-                const id = response.data.id.replace(/https?\:\/\/goo\.gl\//g, '');
+                const id = response.data.id.replace(/https?\:\/\/goo\.gl\//g, ''); // TODO: extract into utils
                 data[id] = {
                     url,
                     startDate: new Date(),
@@ -39,19 +39,24 @@ export const fetchLinksInfo = () => {
     return (dispatch, getState, { axiosInstance }) => {
         const linksData = getState().linksData.data;
 
-        const data = {};
+        const data = {}; // TODO: const data = { ...linksData };
         axios.all(Object.keys(linksData).map(key => axiosInstance({
             method: 'get',
             url: `/${key}/stats`
         })))
             .then(response => {
                 response.forEach(responseItem => {
-                    // Since the server does not return the shortcodes (i.e., our IDs) and we update the entire
-                    // linksData.data state slice, we'll need to extract them from response.config.url pieces.
-                    const shortcode = /.*\/([\d\w]+)\/stats$/g.exec(responseItem.config.url)[1];
-                    data[shortcode] = {
-                        url: linksData[shortcode].url,
-                        ...responseItem.data
+                    const id = responseItem.data.id.replace(/https?\:\/\/goo\.gl\//g, ''); // TODO: extract into utils
+
+                    console.log('responseItem:', responseItem.data);
+                    console.log('redirectCount:', responseItem.data.analytics.allTime.shortUrlClicks);
+                    console.log('key:', id);
+                    console.log('linksData[key]:', linksData[id]);
+
+
+                    data[id] = {
+                        ...linksData[id],
+                        redirectCount: responseItem.data.analytics.allTime.shortUrlClicks
                     };
                 });
                 dispatch(updateLinksDataSuccess(data));
