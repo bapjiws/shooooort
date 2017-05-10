@@ -48,15 +48,10 @@ export const fetchLinksInfo = () => {
                 response.forEach(responseItem => {
                     const id = responseItem.data.id.replace(/https?\:\/\/goo\.gl\//g, ''); // TODO: extract into utils
 
-                    console.log('responseItem:', responseItem.data);
-                    console.log('redirectCount:', responseItem.data.analytics.allTime.shortUrlClicks);
-                    console.log('key:', id);
-                    console.log('linksData[key]:', linksData[id]);
-
-
                     data[id] = {
                         ...linksData[id],
-                        redirectCount: responseItem.data.analytics.allTime.shortUrlClicks
+                        redirectCount: responseItem.data.analytics.allTime.shortUrlClicks,
+                        lastSeenDate: responseItem.data.analytics.allTime.shortUrlClicks !== linksData[id].redirectCount ? new Date() : linksData[id].lastSeenDate
                     };
                 });
                 dispatch(updateLinksDataSuccess(data));
