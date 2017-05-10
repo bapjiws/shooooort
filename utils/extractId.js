@@ -1,0 +1,1 @@
+export const responseDataIdToId = responseDataId => responseDataId.replace(/https?\:\/\/goo\.gl\//g, '');

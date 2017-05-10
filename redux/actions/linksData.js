@@ -8,6 +8,8 @@ import {
     CLEAR_LINKS_DATA
 } from '../actions/types';
 
+import { responseDataIdToId } from '../../utils/extractId';
+
 export const addShortcodeSuccess = (shortcode, data) => ({type: ADD_LINKS_DATA_ENTRY_SUCCESS, shortcode, data});
 export const addShortcodeFailure = error => ({type: ADD_LINKS_DATA_ENTRY_FAILURE, error});
 
@@ -22,7 +24,7 @@ export const shortenLink = url => {
                 console.log('response.data:', response.data);
 
                 let data = {};
-                const id = response.data.id.replace(/https?\:\/\/goo\.gl\//g, ''); // TODO: extract into utils
+                const id = responseDataIdToId(response.data.id); // TODO: extract into utils
                 data[id] = {
                     url,
                     startDate: new Date(),
@@ -39,14 +41,14 @@ export const fetchLinksInfo = () => {
     return (dispatch, getState, { axiosInstance }) => {
         const linksData = getState().linksData.data;
 
-        const data = {}; // TODO: const data = { ...linksData };
+        const data = {};
         axios.all(Object.keys(linksData).map(key => axiosInstance({
             method: 'get',
             url: `/${key}/stats`
         })))
             .then(response => {
                 response.forEach(responseItem => {
-                    const id = responseItem.data.id.replace(/https?\:\/\/goo\.gl\//g, ''); // TODO: extract into utils
+                    const id = responseDataIdToId(responseItem.data.id);
 
                     data[id] = {
                         ...linksData[id],
