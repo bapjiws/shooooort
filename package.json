@@ -50,6 +50,7 @@
     "clean": "rimraf build",
     "dev": "webpack-dev-server",
     "prod": "NODE_ENV=production node server.js",
+    "release-the-kraken": "yarn run build && yarn run prod",
     "proxy": "nodemon proxy.js",
     "test": "babel-tape-runner tests/linksData.js | faucet"
   }
