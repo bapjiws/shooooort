@@ -46,7 +46,7 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "build": "npm run clean && NODE_ENV=production webpack",
+    "build": "yarn run clean && NODE_ENV=production webpack",
     "clean": "rimraf build",
     "dev": "webpack-dev-server",
     "prod": "NODE_ENV=production node server.js",
