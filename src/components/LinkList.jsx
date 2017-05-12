@@ -45,7 +45,7 @@ class LinkList extends Component {
                                 </div>
                             </ CopyToClipboard>
 
-                            <div className="text-url-original">{ linksData[key].url }</div>
+                            <a className="text-url-original" href={ linksData[key].url } target="_blank">{ linksData[key].url }</a>
                         </Col>
                         <Col className="text-data text-align-center" md={1}>
                             { linksData[key].visits }
