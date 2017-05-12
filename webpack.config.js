@@ -34,6 +34,7 @@ if (inProductionMode) {
         Unexpected token: punc ()) [bundle.4d167dd3c295e3f7f263.js:26427,26]
         TODO: Figure this out.
         */
+        // TODO: https://facebook.github.io/react/docs/optimizing-performance.html#webpack
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
         //         warnings: false,
