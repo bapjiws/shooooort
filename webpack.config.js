@@ -28,22 +28,6 @@ const plugins = [
 
 if (inProductionMode) {
     plugins.push(
-        /*
-        This and webpack -p give an error:
-        ERROR in bundle.4d167dd3c295e3f7f263.js from UglifyJs
-        Unexpected token: punc ()) [bundle.4d167dd3c295e3f7f263.js:26427,26]
-        TODO: Figure this out.
-        */
-        // TODO: https://facebook.github.io/react/docs/optimizing-performance.html#webpack
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false,
-        //         drop_console: true
-        //     },
-        //     output: {
-        //         comments: false,
-        //     }
-        // }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
         })
@@ -79,7 +63,8 @@ module.exports = {
                 test: /\.jsx?$/,
                 include: [
                     path.join(__dirname, "/src"),
-                    path.join(__dirname, "/redux")
+                    path.join(__dirname, "/redux"),
+                    path.join(__dirname, "/utils")
                 ],
                 use: inProductionMode ? ['babel-loader'] : ['react-hot-loader', 'babel-loader']
             },
