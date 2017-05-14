@@ -8,10 +8,8 @@ if (process.env.NODE_ENV !== 'production') {
 } else {
     const app = express();
 
-    // Couldn't yet find a way to use process.env constructed in Webpack config, need to parse separately.
-    const dotEnvVars = require('dotenv').config().parsed;
-    const uri = dotEnvVars.GOOGLE_URL_SHORTENER_API;
-    const key = dotEnvVars.API_KEY;
+    const url = process.env.GOOGLE_URL_SHORTENER_API;
+    const key = process.env.API_KEY;
 
     app.use(bodyParser.json());
 
@@ -25,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
     app.use(express.static(path.join(__dirname, 'build')));
 
     app.get('/:shortcode/stats', (req, res, next) => {
-        request.get({ uri, qs: { key, shortUrl: `http://goo.gl/${req.params.shortcode}`, projection: 'ANALYTICS_CLICKS' } }, (error, response, body) => {
+        request.get({ url, qs: { key, shortUrl: `http://goo.gl/${req.params.shortcode}`, projection: 'ANALYTICS_CLICKS' } }, (error, response, body) => {
             console.log('error:', error);
             console.log('statusCode:', response && response.statusCode);
             console.log('body:', body);
@@ -39,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
     });
 
     app.post('/shorten', (req, res, next) => {
-        request.post({ uri, body: { longUrl: req.body.url }, json: true, qs: { key } }, (error, response, body) => {
+        request.post({ url, body: { longUrl: req.body.url }, json: true, qs: { key } }, (error, response, body) => {
             console.log('error:', error);
             console.log('statusCode:', response && response.statusCode);
             console.log('body:', body);
