@@ -9,6 +9,7 @@ const inProductionMode = NODE_ENV === 'production';
 let envVars = {};
 if (inProductionMode) {
     envVars = {
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'process.env.PORT': JSON.stringify(process.env.PORT),
         'process.env.GOOGLE_URL_SHORTENER_API:': JSON.stringify(process.env.GOOGLE_URL_SHORTENER_API),
         'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
