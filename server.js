@@ -52,7 +52,9 @@ if (process.env.NODE_ENV !== 'production') {
     // app.listen(port, () => console.log(`♫ Listening on port ${port} ♫`));
 
     app.listen(port, () => {
-        console.log('process.env:', process.env);
+        console.log('process.env.PORT:', process.env.PORT);
+        console.log('process.env.GOOGLE_URL_SHORTENER_API:', process.env.GOOGLE_URL_SHORTENER_API);
+        console.log('process.env.API_KEY:', process.env.API_KEY);
         console.log(`Listening on port ${port}`)
     });
 }
