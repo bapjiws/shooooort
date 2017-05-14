@@ -17,7 +17,7 @@ const configureStore = () => {
         // initialState,
         process.env.NODE_ENV === 'production' ?
             compose(applyMiddleware(...middlewares), autoRehydrate()) :
-            require('redux-devtools-extension/developmentOnly')(applyMiddleware(...middlewares), autoRehydrate())
+            require('redux-devtools-extension/developmentOnly').composeWithDevTools(applyMiddleware(...middlewares), autoRehydrate())
     );
 };
 
