@@ -47,7 +47,7 @@
     "webpack": "^2.5.1"
   },
   "scripts": {
-    "build": "yarn run clean && NODE_ENV=production webpack -p",
+    "build": "yarn run clean && NODE_ENV=production webpack",
     "clean": "rimraf build",
     "dev": "webpack-dev-server",
     "prod": "NODE_ENV=production node server.js",
