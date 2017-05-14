@@ -4,20 +4,28 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
-const PORT = process.env.PORT;
 const inProductionMode = NODE_ENV === 'production';
 
-const dotEnvVars = require('dotenv').config().parsed;
-const envVars = Object.keys(dotEnvVars).
+let envVars = {};
+if (inProductionMode) {
+    envVars = {
+        'process.env.PORT': JSON.stringify(process.env.PORT),
+        'process.env.GOOGLE_URL_SHORTENER_API:': JSON.stringify(process.env.GOOGLE_URL_SHORTENER_API),
+        'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+        'process.env.HEROKU_URL': JSON.stringify(process.env.HEROKU_URL)
+    }
+} else {
+    const dotEnvVars = require('dotenv').config().parsed;
+    envVars = Object.keys(dotEnvVars).
     reduce( (acc, key) => {
         acc['process.env'][key] = JSON.stringify(dotEnvVars[key]);
         return acc;
     }, {
         'process.env': {
-            PORT: JSON.stringify(PORT),
             NODE_ENV: JSON.stringify(NODE_ENV)
         }
     });
+}
 
 const plugins = [
     new webpack.NoEmitOnErrorsPlugin(),
