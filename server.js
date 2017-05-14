@@ -48,7 +48,7 @@ if (process.env.NODE_ENV !== 'production') {
         });
     });
 
-    const port = process.env.PORT || 99999;
+    const port = process.env.PORT || 8080;
     // app.listen(port, () => console.log(`♫ Listening on port ${port} ♫`));
 
     app.listen(port, () => {
