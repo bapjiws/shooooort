@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV;
+const PORT = process.env.PORT;
 const inProductionMode = NODE_ENV === 'production';
 
 const dotEnvVars = require('dotenv').config().parsed;
@@ -13,6 +14,7 @@ const envVars = Object.keys(dotEnvVars).
         return acc;
     }, {
         'process.env': {
+            PORT: JSON.stringify(PORT),
             NODE_ENV: JSON.stringify(NODE_ENV)
         }
     });
