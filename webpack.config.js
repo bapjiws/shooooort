@@ -16,7 +16,7 @@ const plugins = [
 
 if (inProductionMode) {
     plugins.push(
-        new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_URL_SHORTENER_API', 'API_KEY', 'HEROKU_URL']),
+        new webpack.EnvironmentPlugin(['NODE_ENV', 'GOOGLE_URL_SHORTENER_API', 'API_KEY', 'APP_URL']),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
         })
