@@ -47,13 +47,5 @@ if (process.env.NODE_ENV !== 'production') {
     });
 
     const port = process.env.PORT || 8080;
-    // app.listen(port, () => console.log(`♫ Listening on port ${port} ♫`));
-
-    app.listen(port, () => {
-        console.log('process.env.PORT:', process.env.PORT);
-        console.log('process.env.GOOGLE_URL_SHORTENER_API:', process.env.GOOGLE_URL_SHORTENER_API);
-        console.log('process.env.API_KEY:', process.env.API_KEY);
-        console.log('process.env.APP_URL:', process.env.APP_URL);
-        console.log(`Listening on port ${port}`)
-    });
+    app.listen(port, () => console.log(`♫ Listening on port ${port} ♫`));
 }
