@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Row, Col, Button, FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
+import { Button, FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
 
 import { shortenLink } from '../../redux/actions/linksData';
 
@@ -55,27 +55,25 @@ class UserInput extends Component {
     render() {
         const { input, inputIsValid } = this.state;
 
-        return <Row className="user-input">
-            <Col md={9}>
-                <form>
-                    <FormGroup
-                        validationState={this.getValidationState()}
-                    >
-                        <FormControl
-                            className="text-form-control"
-                            type="text"
-                            value={this.state.input}
-                            placeholder="Paste the link you want to shorten here"
-                            onChange={this.handleChange}
-                            onKeyDown={this.handleKeyDown}
-                            inputRef={ref => this.form = ref}
-                        />
-                        <FormControl.Feedback />
-                        { input && !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
-                    </FormGroup>
-                </form>
-            </Col>
-            <Col className="padding-left-button" md={3}>
+        return <div className="user-input">
+            <form className="form">
+                <FormGroup
+                    validationState={this.getValidationState()}
+                >
+                    <FormControl
+                        className="text-form-control"
+                        type="text"
+                        value={this.state.input}
+                        placeholder="Paste the link you want to shorten here"
+                        onChange={this.handleChange}
+                        onKeyDown={this.handleKeyDown}
+                        inputRef={ref => this.form = ref}
+                    />
+                    <FormControl.Feedback />
+                    { input && !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
+                </FormGroup>
+            </form>
+            <div className="button">
                 <Button
                     className={input && inputIsValid ?
                         "button-with-input text-button-with-input width-button-with-input" :
@@ -84,8 +82,9 @@ class UserInput extends Component {
                     onClick={this.handleCLick}
                 >
                     Shorten this link
-                </Button></Col>
-        </Row>
+                </Button>
+            </div>
+        </div>
     }
 }
 

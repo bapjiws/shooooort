@@ -116,36 +116,63 @@ body {
 }
 
 #app {
-  width: 80%;
+  width: 50%;
   height: 100vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 
-  border: 1px solid black;
+  border: 3px dashed black;
 }
 
-// This is needed so this div coincides with #app-container, into which we mount our app.
+// This is needed so this div coincides with #app, into which we mount our app.
 .components {
   padding: 0;
   margin: 0;
   width: 100%;
 }
 
-.headline, .user-input {
+.headline {
   margin-top: 3.5em;
   margin-bottom: 3.5em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: baseline;
   width: 100%;
 }
 
-.logo, .description {
+.user-input {
+  margin-top: 3.5em;
+  margin-bottom: 3.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  width: 100%;
+}
+
+.form {
+  width: 75%;
+}
+
+.button {
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.logo {
   width: 50%;
+}
+
+.description {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .clear-history, .link-list-header, .link-list-row {
@@ -159,16 +186,6 @@ body {
   text-align: center;
 }
 /*TEXT ALIGNMENTS*/
-
-/*PADDINGS*/
-.padding-left-description {
-  padding-left: 9.5em;
-}
-
-.padding-left-button {
-  padding-left: 2em;
-}
-/*PADDINGS*/
 
 /*BACKGROUND COLORS*/
 .form-control {
