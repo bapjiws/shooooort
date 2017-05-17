@@ -1,19 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Row, Col } from 'react-bootstrap/lib';
-
 import { clearHistory } from '../../redux/actions/linksData';
 
 const ClearHistory = ({ clearHistory }) =>
-    <Row className="clear-history flex-cross-axis-align-baseline">
-        <Col className="text-section-heading" md={6}>
+    <div className="clear-history">
+        <div className="text-previously-shortened previously-shortened">
             Previously shortened by you
-        </Col>
-        <Col md={2}>
+        </div>
+        <div className="clear-history-link">
             <a className="text-clear-history-link" onClick={clearHistory}>Clear history</a>
-        </Col>
-    </Row>;
+        </div>
+    </div>;
 
 export default connect(
     null,
