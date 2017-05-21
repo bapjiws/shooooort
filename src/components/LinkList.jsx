@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import TimeAgo from 'react-timeago';
-import { Row, Col } from 'react-bootstrap/lib';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 import { fetchLinksInfo } from '../../redux/actions/linksData';
@@ -22,41 +21,43 @@ class LinkList extends Component {
 
     render() {
         const { linksData } = this.props;
-        return <div>
-            <Row className="link-list-header">
-                <Col className="text-table-heading" md={8}>
-                    LINK
-                </Col>
-                <Col className="text-table-heading text-align-center" md={1}>
-                    VISITS
-                </Col>
-                <Col className="text-table-heading text-align-center" md={3}>
-                    LAST VISITED
-                </Col>
-            </Row>
-            {
-                Object.keys(linksData).map(key =>
-                    <Row className="link-list-row flex-cross-axis-align-center" key={key}>
-                        <Col md={8}>
-                            <CopyToClipboard text={`http://goo.gl/${key}`}>
-                                <div>
-                                    <span className="text-url-body">http://goo.gl/</span>
-                                    <span className="text-url-shortcode">{ `${key}` }</span>
-                                </div>
-                            </ CopyToClipboard>
+        return (
+            <section>
+                <div className="link-list-header">
+                    <div className="link-list-header-link text-table-heading">
+                        LINK
+                    </div>
+                    <div className="link-list-header-visits text-table-heading text-align-center">
+                        VISITS
+                    </div>
+                    <div className="link-list-header-last-visited text-table-heading text-align-center">
+                        LAST VISITED
+                    </div>
+                </div>
+                {
+                    Object.keys(linksData).map(key =>
+                        <div className="link-list-row" key={key}>
+                            <div className="link-list-row-link">
+                                <CopyToClipboard text={`http://goo.gl/${key}`}>
+                                    <div>
+                                        <span className="text-url-body">http://goo.gl/</span>
+                                        <span className="text-url-shortcode">{ `${key}` }</span>
+                                    </div>
+                                </ CopyToClipboard>
 
-                            <a className="text-url-original" href={ linksData[key].url } target="_blank">{ linksData[key].url }</a>
-                        </Col>
-                        <Col className="text-data text-align-center" md={1}>
-                            { linksData[key].visits }
-                        </Col>
-                        <Col className="text-data text-align-center" md={3}>
-                            { <TimeAgo date={linksData[key].lastVisited} live={false} /> }
-                        </Col>
-                    </Row>
-                )
-            }
-        </div>;
+                                <a className="text-url-original" href={ linksData[key].url } target="_blank">{ linksData[key].url }</a>
+                            </div>
+                            <div className="link-list-row-visits text-data text-align-center">
+                                { linksData[key].visits }
+                            </div>
+                            <div className="link-list-row-last-visited text-data text-align-center">
+                                { <TimeAgo date={linksData[key].lastVisited} live={false} /> }
+                            </div>
+                        </div>
+                    )
+                }
+            </section>
+        )
     }
 }
 
