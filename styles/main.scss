@@ -1,8 +1,3 @@
-// Use this to debug the layout.
-//.row > [class*='col-'] {
-//  border: 2px solid red;
-//}
-
 @import 'mixins';
 @import 'colors';
 
@@ -74,12 +69,6 @@
 /*TEXT FORMATS*/
 
 /*MARGINS*/
-// TODO: remove when done
-.row {
-  margin-right: 0;
-  margin-left: 0;
-}
-
 * {
   border: 1px solid red;
 }
