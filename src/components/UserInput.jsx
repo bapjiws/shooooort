@@ -75,9 +75,6 @@ class UserInput extends Component {
             </form>
             <div className="button">
                 <Button
-                    className={input && inputIsValid ?
-                        "button-with-input text-button-with-input width-button-with-input" :
-                        "button-no-input text-button-no-input width-button-no-input"}
                     disabled={!input || !inputIsValid}
                     onClick={this.handleCLick}
                 >

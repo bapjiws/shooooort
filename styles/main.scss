@@ -24,18 +24,6 @@
   color: $secondary-text;
 }
 
-.text-button-no-input, button:hover.text-button-no-input {
-  font-size: 16px;
-  font-family: 'Roboto-Regular';
-  color: $disabled-button-text;
-}
-
-.text-button-with-input, button:hover.text-button-with-input {
-  font-size: 16px;
-  font-family: 'Roboto-Regular';
-  color: white;
-}
-
 .text-previously-shortened {
   font-size: 22px;
   font-family: 'Roboto-Light';
@@ -218,21 +206,26 @@ body {
 .form-control {
   background-color: $light-background;
 }
-
-.button-no-input, button:disabled:hover.button-no-input {
-  background-color: $disabled-button-background;
-}
-
-.button-with-input, button:hover.button-with-input {
-  background-color: $accent;
-}
 /*BACKGROUND COLORS*/
 
-/*SIZES*/
-.width-button-no-input, .width-button-with-input {
-  width: 10em;
+/*BUTTON*/
+// TODO: remove !important when done
+button, button:hover {
+  font-size: 16px !important;
+  font-family: 'Roboto-Regular' !important;
+  color: white !important;
+  background-color: $accent !important;
+  width: 10em !important;
 }
-/*SIZES*/
+
+button[disabled], button[disabled]:hover {
+  font-size: 16px !important;
+  font-family: 'Roboto-Regular' !important;
+  color: $disabled-button-text !important;
+  background-color: $disabled-button-background !important;
+  width: 10em !important;
+}
+/*BUTTON*/
 
 /*SHOW'N'HIDE*/
 .row > [class*='col-'] > div > span {
