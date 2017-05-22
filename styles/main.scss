@@ -1,3 +1,8 @@
+// FOR DEBUGGING
+* {
+  border: 1px solid red;
+}
+
 @import 'mixins';
 @import 'colors';
 
@@ -68,11 +73,7 @@
 }
 /*TEXT FORMATS*/
 
-/*MARGINS*/
-* {
-  border: 1px solid red;
-}
-
+/*FLEXBOXES*/
 body {
   display: flex;
   flex-direction: row;
@@ -88,7 +89,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 
-  border: 3px dashed black;
+  border: 3px dashed black; // FOR DEBUGGING
 }
 
 // This is needed so this div coincides with #app, into which we mount our app.
@@ -183,7 +184,7 @@ body {
 .link-list-header-last-visited, .link-list-row-last-visited {
   width: 25%;
 }
-/*MARGINS*/
+/*FLEXBOXES*/
 
 /*TEXT ALIGNMENTS*/
 .text-align-center {
@@ -217,6 +218,7 @@ button[disabled], button[disabled]:hover {
 /*BUTTON*/
 
 /*SHOW'N'HIDE*/
+// TODO: re-implement
 .row > [class*='col-'] > div > span {
   cursor: pointer;
 }
