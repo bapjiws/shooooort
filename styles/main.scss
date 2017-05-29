@@ -13,32 +13,32 @@
 /*TEXT FORMATS*/
 .text-logo {
   font-size: 47px;
-  font-family: 'Montserrat-Regular';
+  font-family: 'Montserrat-Regular', sans-serif;
   text-decoration: underline;
   color: $accent;
 }
 
 .text-normal {
   font-size: 16px;
-  font-family: 'Roboto-Light';
+  font-family: 'Roboto-Light', sans-serif;
   color: $secondary-text;
 }
 
 .text-previously-shortened {
   font-size: 22px;
-  font-family: 'Roboto-Light';
+  font-family: 'Roboto-Light', sans-serif;
   color: $primary-text;
 }
 
 .text-url-body, .text-data {
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: $primary-text;
 }
 
 .text-clear-history-link, .text-url-shortcode {
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: $accent;
 }
 
@@ -49,26 +49,26 @@
 
 .text-url-original {
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   cursor: pointer;
   color: $unimportant-text;
 }
 
 .text-table-heading {
   font-size: 14px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: $secondary-text;
 }
 
 .text-form-control {
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: $primary-text;
 }
 
 .text-form-control-validation-help {
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: $accent;
 }
 /*TEXT FORMATS*/
@@ -140,7 +140,7 @@ button {
   // TODO: probably move to a separate class
   /*text format*/
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: white; // TODO: use scss to establish the value
   background-color: $accent;  // TODO: use scss to establish the value
 }
@@ -152,7 +152,7 @@ button[disabled] {
   // TODO: probably move to a separate class
   /*text format*/
   font-size: 16px;
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular', sans-serif;
   color: $disabled-button-text;  // TODO: use scss to establish the value
   background-color: $disabled-button-background;  // TODO: use scss to establish the value
 }
