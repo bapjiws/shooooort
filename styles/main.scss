@@ -62,11 +62,29 @@
   color: $secondary-text;
 }
 
+
 .text-form-control {
   font-size: 16px;
   font-family: 'Roboto-Regular', sans-serif;
-  color: $primary-text;
+  //color: $primary-text;
 }
+
+// See: https://css-tricks.com/almanac/selectors/p/placeholder/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $secondary-text;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $secondary-text;
+  opacity: 1; // By default, all placeholders in Firefox have an opacity value applied to them, need to reset
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $secondary-text;
+  opacity: 1; // By default, all placeholders in Firefox have an opacity value applied to them, need to reset
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $secondary-text;
+}
+
 
 .text-form-control-validation-help {
   font-size: 16px;
