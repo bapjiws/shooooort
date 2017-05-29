@@ -1,7 +1,7 @@
 // FOR DEBUGGING
-* {
-  border: 1px solid red;
-}
+//* {
+//  border: 1px solid red;
+//}
 
 @import 'mixins';
 @import 'colors';
@@ -89,7 +89,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 
-  border: 3px dashed black; // FOR DEBUGGING
+  //border: 3px dashed black; // FOR DEBUGGING
 }
 
 // This is needed so this div coincides with #app, into which we mount our app.
@@ -158,6 +158,29 @@ button[disabled] {
 }
 /*BUTTON*/
 
+/*TEXT INPUT*/
+input[type=text] {
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  background-color: $light-background;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+
+  transition-property: border-color, box-shadow;
+  transition-timing-function: ease-in-out;
+  transition-duration: .3s;
+}
+
+input[type=text]:focus {
+  outline: none;
+  border-color: #66afe9; // TODO: create a color variable
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6); // the latter is #66afe9, too
+}
+/*TEXT INPUT*/
+
 .logo {
   width: 50%;
 }
@@ -221,12 +244,6 @@ button[disabled] {
   text-align: center;
 }
 /*TEXT ALIGNMENTS*/
-
-/*BACKGROUND COLORS*/
-.form-control {
-  background-color: $light-background;
-}
-/*BACKGROUND COLORS*/
 
 /*SHOW'N'HIDE*/
 // TODO: re-implement

@@ -81,6 +81,22 @@ class UserInput extends Component {
                     Shorten this link
                 </button>
             </div>
+
+            <form className="form-container">
+                <input
+                    type="text"
+                    className="text-form-control"
+                    placeholder="Paste the link you want to shorten here"
+                />
+            </form>
+            <div className="button-container">
+                <button
+                    disabled={!input || !inputIsValid}
+                    onClick={this.handleCLick}
+                >
+                    Shorten this link
+                </button>
+            </div>
         </div>
     }
 }
