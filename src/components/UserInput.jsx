@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
+import { FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
 
 import { shortenLink } from '../../redux/actions/linksData';
 
@@ -55,8 +55,8 @@ class UserInput extends Component {
     render() {
         const { input, inputIsValid } = this.state;
 
-        return <div className="user-input">
-            <form className="form">
+        return <div className="user-input-container">
+            <form className="form-container">
                 <FormGroup
                     validationState={this.getValidationState()}
                 >
@@ -73,13 +73,13 @@ class UserInput extends Component {
                     { input && !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
                 </FormGroup>
             </form>
-            <div className="button">
-                <Button
+            <div className="button-container">
+                <button
                     disabled={!input || !inputIsValid}
                     onClick={this.handleCLick}
                 >
                     Shorten this link
-                </Button>
+                </button>
             </div>
         </div>
     }

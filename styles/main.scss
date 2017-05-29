@@ -108,25 +108,55 @@ body {
   width: 100%;
 }
 
-.user-input {
+.user-input-container {
   margin-top: 3.5em;
   margin-bottom: 3.5em;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: baseline;
   width: 100%;
 }
 
-.form {
+.form-container {
   width: 75%;
 }
 
-.button {
+.button-container {
   width: 25%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
+
+/*BUTTON*/
+button {
+  width: 10em; // TODO: decide on the most appropriate CSS length unit
+  white-space: nowrap;
+  padding: 6px 12px; // TODO: decide on the most appropriate CSS length unit
+  border-radius: 4px;
+  // touch-action: manipulation; // See: https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action?v=control
+
+  // TODO: probably move to a separate class
+  /*text format*/
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: white; // TODO: use scss to establish the value
+  background-color: $accent;  // TODO: use scss to establish the value
+}
+
+button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+
+  // TODO: probably move to a separate class
+  /*text format*/
+  font-size: 16px;
+  font-family: 'Roboto-Regular';
+  color: $disabled-button-text;  // TODO: use scss to establish the value
+  background-color: $disabled-button-background;  // TODO: use scss to establish the value
+}
+/*BUTTON*/
 
 .logo {
   width: 50%;
@@ -197,25 +227,6 @@ body {
   background-color: $light-background;
 }
 /*BACKGROUND COLORS*/
-
-/*BUTTON*/
-// TODO: remove !important when done
-button, button:hover {
-  font-size: 16px !important;
-  font-family: 'Roboto-Regular' !important;
-  color: white !important;
-  background-color: $accent !important;
-  width: 10em !important;
-}
-
-button[disabled], button[disabled]:hover {
-  font-size: 16px !important;
-  font-family: 'Roboto-Regular' !important;
-  color: $disabled-button-text !important;
-  background-color: $disabled-button-background !important;
-  width: 10em !important;
-}
-/*BUTTON*/
 
 /*SHOW'N'HIDE*/
 // TODO: re-implement
