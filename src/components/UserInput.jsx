@@ -14,7 +14,7 @@ class UserInput extends Component {
             input: '',
             inputIsValid: false
         };
-        this.form = null;
+        this.textInput = null;
     }
 
     handleChange = event => {
@@ -41,7 +41,7 @@ class UserInput extends Component {
                 event.preventDefault();
                 this.props.shortenLink(this.state.input);
                 this.setState({input: ''});
-                this.form.blur();
+                this.textInput.blur();
                 break;
         }
     };
@@ -67,10 +67,10 @@ class UserInput extends Component {
                         placeholder="Paste the link you want to shorten here"
                         onChange={this.handleChange}
                         onKeyDown={this.handleKeyDown}
-                        inputRef={ref => this.form = ref}
+                        inputRef={ref => this.textInput = ref}
                     />
                     <FormControl.Feedback />
-                    { input && !inputIsValid && <HelpBlock className="text-form-control-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
+                    { input && !inputIsValid && <HelpBlock className="text-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
                 </FormGroup>
             </form>
             <div className="button-container">
@@ -87,7 +87,12 @@ class UserInput extends Component {
                     type="text"
                     className="text-form-control"
                     placeholder="Paste the link you want to shorten here"
+                    value={this.state.input}
+                    onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}
+                    ref={(input) => { this.textInput = input; }}
                 />
+                { input && !inputIsValid && <div className="text-validation-help help-block">Links should start with "http://" or "https://"</div> }
             </form>
             <div className="button-container">
                 <button
