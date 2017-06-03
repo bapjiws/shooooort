@@ -83,15 +83,22 @@ class UserInput extends Component {
             </div>
 
             <form className="form-container">
-                <input
-                    type="text"
-                    className="text-form-control"
-                    placeholder="Paste the link you want to shorten here"
-                    value={this.state.input}
-                    onChange={this.handleChange}
-                    onKeyDown={this.handleKeyDown}
-                    ref={(input) => { this.textInput = input; }}
-                />
+                <div className="has-feedback">
+                    <input
+                        type="text"
+                        className="text-form-control"
+                        placeholder="Paste the link you want to shorten here"
+                        value={this.state.input}
+                        onChange={this.handleChange}
+                        onKeyDown={this.handleKeyDown}
+                        ref={ input => { this.textInput = input }}
+                    />
+                    { input && !inputIsValid &&  <div className="feedback-icon-container">
+                        <svg className="incorrect-icon">
+                            <use xlinkHref="../../assets/icons.svg#icon-cross"/>
+                        </svg>
+                    </div> }
+                </div>
                 { input && !inputIsValid && <div className="text-validation-help help-block">Links should start with "http://" or "https://"</div> }
             </form>
             <div className="button-container">
