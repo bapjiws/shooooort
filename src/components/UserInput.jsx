@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-import { FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
-
 import { shortenLink } from '../../redux/actions/linksData';
 
 import { inputIsValid } from '../../utils/inputValidation';
@@ -63,34 +61,7 @@ class UserInput extends Component {
         });
 
         return <div className="user-input-container">
-            <form className="form-container">
-                <FormGroup
-                    validationState={this.getValidationState()}
-                >
-                    <FormControl
-                        className="text-form-control"
-                        type="text"
-                        value={this.state.input}
-                        placeholder="Paste the link you want to shorten here"
-                        onChange={this.handleChange}
-                        onKeyDown={this.handleKeyDown}
-                        inputRef={ref => this.textInput = ref}
-                    />
-                    <FormControl.Feedback />
-                    { input && !inputIsValid && <HelpBlock className="text-validation-help">Links should start with "http://" or "https://"</HelpBlock> }
-                </FormGroup>
-            </form>
-            <div className="button-container">
-                <button
-                    disabled={!input || !inputIsValid}
-                    onClick={this.handleCLick}
-                >
-                    Shorten this link
-                </button>
-            </div>
-
-
-            <form className="form-container">
+             <form className="form-container">
                 <div className="has-feedback">
                     <input
                         type="text"
