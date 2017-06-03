@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 
 import { FormGroup, FormControl, HelpBlock } from 'react-bootstrap/lib';
 
@@ -55,6 +56,12 @@ class UserInput extends Component {
     render() {
         const { input, inputIsValid } = this.state;
 
+        // TODO: implement classnames and move to utils
+        let classes = classnames('text-form-control', {
+            'input-focus-incorrect': input && !inputIsValid,
+            'input-focus-correct': input && inputIsValid
+        });
+
         return <div className="user-input-container">
             <form className="form-container">
                 <FormGroup
@@ -82,22 +89,31 @@ class UserInput extends Component {
                 </button>
             </div>
 
+
             <form className="form-container">
                 <div className="has-feedback">
                     <input
                         type="text"
-                        className="text-form-control"
+                        className={classes}
                         placeholder="Paste the link you want to shorten here"
                         value={this.state.input}
                         onChange={this.handleChange}
                         onKeyDown={this.handleKeyDown}
                         ref={ input => { this.textInput = input }}
                     />
-                    { input && !inputIsValid &&  <div className="feedback-icon-container">
-                        <svg className="incorrect-icon">
-                            <use xlinkHref="../../assets/icons.svg#icon-cross"/>
-                        </svg>
-                    </div> }
+                    {
+                        input && (!inputIsValid ?
+                        <div className="feedback-icon-container">
+                            <svg className="incorrect-icon">
+                                <use xlinkHref="../../assets/icons.svg#icon-cross"/>
+                            </svg>
+                        </div> :
+                        <div className="feedback-icon-container">
+                            <svg className="correct-icon">
+                                <use xlinkHref="../../assets/icons.svg#icon-checkmark"/>
+                            </svg>
+                        </div>)
+                    }
                 </div>
                 { input && !inputIsValid && <div className="text-validation-help help-block">Links should start with "http://" or "https://"</div> }
             </form>

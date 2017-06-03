@@ -1,7 +1,7 @@
 // FOR DEBUGGING
-* {
-  border: 1px solid red;
-}
+//* {
+//  border: 1px solid red;
+//}
 
 // TODO: add vendor prefixes
 
@@ -107,6 +107,15 @@
   stroke-width: 0;
   stroke: $incorrect-input;
   fill: $incorrect-input;
+}
+
+.correct-icon {
+  //display: inline-block;
+  width: 12px; // or .75rem
+  height: 12px;  // or .75rem
+  stroke-width: 0;
+  stroke: $correct-input;
+  fill: $correct-input;
 }
 
 .text-validation-help {
@@ -227,6 +236,19 @@ input[type=text]:focus {
   border-color: #66afe9; // TODO: create a color variable
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6); // the latter is #66afe9, too
 }
+
+input[type=text].input-focus-incorrect:focus {
+  outline: none;
+  border-color: $incorrect-input;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(178,13,1,.6); // the latter is $incorrect-input, too
+}
+
+input[type=text].input-focus-correct:focus {
+  outline: none;
+  border-color: $correct-input;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(17, 158, 5,.6); // the latter is $correct-input, too
+}
+
 /*TEXT INPUT*/
 
 .logo {
