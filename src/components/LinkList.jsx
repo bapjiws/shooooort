@@ -7,6 +7,15 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { fetchLinksInfo } from '../../redux/actions/linksData';
 
 class LinkList extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            mouseOver: false,
+            clicked: false
+        };
+    }
+
     componentDidMount() {
         this.props.fetchLinksInfo();
         // this.timerID = setInterval(
@@ -21,6 +30,8 @@ class LinkList extends Component {
 
     render() {
         const { linksData } = this.props;
+        const { mouseOver, clicked } = this.state;
+
         return (
             <section>
                 <div className="link-list-header">
@@ -40,11 +51,25 @@ class LinkList extends Component {
                             <div className="link-list-row-link">
                                 <CopyToClipboard text={`http://goo.gl/${key}`}>
                                     <div>
-                                        <span className="text-url-body">http://goo.gl/</span>
-                                        <span className="text-url-shortcode">{ `${key}` }</span>
+                                        <span
+                                            onMouseOver={() => this.setState({mouseOver: true})}
+                                            onMouseLeave={() => {
+                                                this.setState({mouseOver: false});
+                                                this.setState({clicked: false})
+                                            }}
+                                            onClick={() => this.setState({clicked: true})}
+                                            >
+                                            <span className="text-url-body">http://goo.gl/</span>
+                                            <span className="text-url-shortcode">{ `${key}` }</span>
+
+                                        </span>
+                                        <span
+                                            className={mouseOver && !clicked ?
+                                                'copy-suggestion-visible' : 'copy-suggestion-hidden'}>
+                                            Click to copy this link
+                                        </span>
                                     </div>
                                 </ CopyToClipboard>
-
                                 <a className="text-url-original" href={ linksData[key].url } target="_blank">{ linksData[key].url }</a>
                             </div>
                             <div className="link-list-row-visits text-data text-align-center">
