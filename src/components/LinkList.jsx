@@ -61,7 +61,6 @@ class LinkList extends Component {
                                             >
                                             <span className="text-url-body">http://goo.gl/</span>
                                             <span className="text-url-shortcode">{ `${key}` }</span>
-
                                         </span>
                                         <span
                                             className={mouseOver && !clicked ?
