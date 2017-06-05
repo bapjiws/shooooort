@@ -23,14 +23,14 @@ class LinkList extends Component {
 
         return (
             <section>
-                <div className="link-list-header">
-                    <div className="link-list-header-link text-table-heading">
+                <div className="link-list-header-container">
+                    <div className="link-list-header-link-container text-table-heading">
                         LINK
                     </div>
-                    <div className="link-list-header-visits text-table-heading text-align-center">
+                    <div className="link-list-header-visits-container text-table-heading">
                         VISITS
                     </div>
-                    <div className="link-list-header-last-visited text-table-heading text-align-center">
+                    <div className="link-list-header-last-visited-container text-table-heading">
                         LAST VISITED
                     </div>
                 </div>

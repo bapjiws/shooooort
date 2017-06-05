@@ -55,38 +55,36 @@ class UserInput extends Component {
         const { input, inputIsValid } = this.state;
 
         // TODO: implement classnames and move to utils
-        let classes = classnames('text-form-control', {
+        let classes = classnames('text-input', {
             'input-focus-incorrect': input && !inputIsValid,
             'input-focus-correct': input && inputIsValid
         });
 
         return <div className="user-input-container">
              <form className="form-container">
-                <div className="has-feedback">
-                    <input
-                        type="text"
-                        className={classes}
-                        placeholder="Paste the link you want to shorten here"
-                        value={this.state.input}
-                        onChange={this.handleChange}
-                        onKeyDown={this.handleKeyDown}
-                        ref={ input => { this.textInput = input }}
-                    />
-                    {
-                        input && (!inputIsValid ?
-                        <div className="feedback-icon-container">
-                            <svg className="incorrect-icon">
-                                <use xlinkHref="../../assets/icons.svg#icon-cross"/>
-                            </svg>
-                        </div> :
-                        <div className="feedback-icon-container">
-                            <svg className="correct-icon">
-                                <use xlinkHref="../../assets/icons.svg#icon-checkmark"/>
-                            </svg>
-                        </div>)
-                    }
-                </div>
-                { input && !inputIsValid && <div className="text-validation-help help-block">Links should start with "http://" or "https://"</div> }
+                 <input
+                     type="text"
+                     className={classes}
+                     placeholder="Paste the link you want to shorten here"
+                     value={this.state.input}
+                     onChange={this.handleChange}
+                     onKeyDown={this.handleKeyDown}
+                     ref={ input => { this.textInput = input }}
+                 />
+                 {
+                     input && (!inputIsValid ?
+                         <div className="input-feedback-icon-container">
+                             <svg className="incorrect-input-icon">
+                                 <use xlinkHref="../../assets/icons.svg#icon-cross"/>
+                             </svg>
+                         </div> :
+                         <div className="input-feedback-icon-container">
+                             <svg className="correct-input-icon">
+                                 <use xlinkHref="../../assets/icons.svg#icon-checkmark"/>
+                             </svg>
+                         </div>)
+                 }
+                { input && !inputIsValid && <div className="text-validation-help input-help">Links should start with "http://" or "https://"</div> }
             </form>
             <div className="button-container">
                 <button

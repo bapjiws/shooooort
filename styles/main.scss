@@ -12,6 +12,8 @@
 @include fontFace($family:'Roboto-Light', $src:'../assets/fonts/Roboto/Roboto-Light');
 @include fontFace($family:'Roboto-Regular', $src:'../assets/fonts/Roboto/Roboto-Regular');
 
+// TODO: decide on whether to use prefixes (e.g., "text-") or postfixes (e.g., "-container")
+
 /*TEXT FORMATS*/
 .text-logo {
   font-size: 47px;
@@ -66,13 +68,149 @@
   color: $secondary-text;
 }
 
-
-.text-form-control {
+.text-input {
   font-size: 16px;
   font-family: 'Roboto-Regular', sans-serif;
-  //color: $primary-text;
+  color: $primary-text;
 }
 
+.text-validation-help {
+  font-size: 16px;
+  font-family: 'Roboto-Regular', sans-serif;
+  color: $incorrect-input;
+}
+/*TEXT FORMATS*/
+
+/*FLEX CONTAINERS*/
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+#app {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  //border: 3px dashed black; // FOR DEBUGGING
+}
+
+// This is needed so this div coincides with #app, into which we mount our app.
+.components {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.headline-container {
+  margin-top: 3.5em;
+  margin-bottom: 3.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 100%;
+}
+
+.logo-container {
+  width: 50%;
+}
+
+.description-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.user-input-container {
+  margin-top: 3.5em;
+  margin-bottom: 3.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  width: 100%;
+}
+
+.form-container {
+  width: 75%;
+  position: relative;
+}
+
+.button-container {
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.input-feedback-icon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 34px;
+  width: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clear-history-container {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.previously-shortened-container {
+  width: 50%;
+}
+
+.clear-history-link-container {
+  width: 50%;
+}
+
+.link-list-header-container {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.link-list-row-container {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.link-list-header-link-container, .link-list-row-link-container {
+  width: 65%;
+}
+
+.link-list-header-visits-container, .link-list-row-visits-container {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.link-list-header-last-visited-container, .link-list-row-last-visited-container {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+/*FLEX CONTAINERS*/
+
+/*INPUT COLOR*/
 // See: https://css-tricks.com/almanac/selectors/p/placeholder/
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: $secondary-text;
@@ -88,106 +226,30 @@
 :-ms-input-placeholder { /* IE 10+ */
   color: $secondary-text;
 }
+/*INPUT COLOR*/
 
-.has-feedback {
-  position: relative;
-}
-
-.feedback-icon-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 34px;
-  width: 34px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.incorrect-icon {
-  //display: inline-block;
+/*ICONS*/
+.incorrect-input-icon {
   width: 12px; // or .75rem
   height: 12px;  // or .75rem
-  stroke-width: 0;
+  stroke-width: 1;
   stroke: $incorrect-input;
   fill: $incorrect-input;
 }
 
-.correct-icon {
-  //display: inline-block;
+.correct-input-icon {
   width: 12px; // or .75rem
   height: 12px;  // or .75rem
-  stroke-width: 0;
+  stroke-width: 1;
   stroke: $correct-input;
   fill: $correct-input;
 }
+/*ICONS*/
 
-.text-validation-help {
-  font-size: 16px;
-  font-family: 'Roboto-Regular', sans-serif;
-  color: $incorrect-input;
-}
-.help-block {
+// TODO: put somewhere
+.input-help {
   margin-top: 5px;
   margin-bottom: 10px;
-}
-
-/*TEXT FORMATS*/
-
-/*FLEXBOXES*/
-body {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-}
-
-#app {
-  width: 60%;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  //border: 3px dashed black; // FOR DEBUGGING
-}
-
-// This is needed so this div coincides with #app, into which we mount our app.
-.components {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.headline {
-  margin-top: 3.5em;
-  margin-bottom: 3.5em;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  width: 100%;
-}
-
-.user-input-container {
-  margin-top: 3.5em;
-  margin-bottom: 3.5em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: baseline;
-  width: 100%;
-}
-
-.form-container {
-  width: 75%;
-}
-
-.button-container {
-  width: 25%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
 }
 
 /*BUTTON*/
@@ -253,72 +315,7 @@ input[type=text].input-focus-correct:focus {
   border-color: $correct-input;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(17, 158, 5,.6); // the latter is $correct-input, too
 }
-
 /*TEXT INPUT*/
-
-.logo {
-  width: 50%;
-}
-
-.description {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
-.clear-history {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-.previously-shortened {
-  width: 50%;
-}
-
-.clear-history-link {
-  width: 50%;
-}
-
-.link-list-header {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-
-  display: flex;
-  flex-direction: row;
-}
-
-.link-list-row {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.link-list-header-link, .link-list-row-link {
-  width: 65%;
-}
-
-.link-list-header-visits, .link-list-row-visits {
-  width: 10%;
-}
-
-.link-list-header-last-visited, .link-list-row-last-visited {
-  width: 25%;
-}
-/*FLEXBOXES*/
-
-/*TEXT ALIGNMENTS*/
-.text-align-center {
-  text-align: center;
-}
-/*TEXT ALIGNMENTS*/
 
 /*SHOW'N'HIDE*/
 //.text-url-body:hover + .text-url-shortcode::after,
@@ -326,7 +323,6 @@ input[type=text].input-focus-correct:focus {
 //  content: "Click to copy this link";
 //  margin-left: 2em;
 //}
-/*SHOW'N'HIDE*/
 
 .copy-suggestion-visible {
   margin-left: 2em;
@@ -339,3 +335,4 @@ input[type=text].input-focus-correct:focus {
 .copy-suggestion-hidden {
   display: none;
 }
+/*SHOW'N'HIDE*/

@@ -18,8 +18,8 @@ class LinkListRow extends Component {
         const { mouseOver, clicked } = this.state;
 
         return (
-            <div className="link-list-row" key={rowId}>
-                <div className="link-list-row-link">
+            <div className="link-list-row-container" key={rowId}>
+                <div className="link-list-row-link-container">
                     <CopyToClipboard text={`http://goo.gl/${rowId}`}>
                         <div>
                             <span
@@ -42,10 +42,10 @@ class LinkListRow extends Component {
                     </ CopyToClipboard>
                     <a className="text-url-original" href={ linksData[rowId].url } target="_blank">{ linksData[rowId].url }</a>
                 </div>
-                <div className="link-list-row-visits text-data text-align-center">
+                <div className="link-list-row-visits-container text-data">
                     { linksData[rowId].visits }
                 </div>
-                <div className="link-list-row-last-visited text-data text-align-center">
+                <div className="link-list-row-last-visited-container text-data">
                     { <TimeAgo date={linksData[rowId].lastVisited} live={false} /> }
                 </div>
             </div>
