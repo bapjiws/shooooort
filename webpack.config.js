@@ -69,23 +69,13 @@ module.exports = {
 
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({
+                use: inProductionMode ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        }
-                    ]
-                })
+                    use: ['css-loader', 'sass-loader']
+                }) : ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader'],
+                }))
             },
 
             {
