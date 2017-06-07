@@ -44,6 +44,7 @@ module.exports = {
         bundle: './src/index.js',
         vendor: ['react', 'react-dom', 'react-redux', 'redux', 'redux-persist', 'redux-thunk']
     } : [
+        'react-hot-loader/patch',
         'webpack-hot-middleware/client',
         './src/index.js'
     ],
@@ -62,7 +63,8 @@ module.exports = {
                     path.join(__dirname, "/redux"),
                     path.join(__dirname, "/utils")
                 ],
-                use: inProductionMode ? ['babel-loader'] : ['react-hot-loader', 'babel-loader']
+                // React Hot Loader ahouls be automatically disabled in production
+                use: inProductionMode ? ['babel-loader'] : ['react-hot-loader/webpack', 'babel-loader']
             },
 
             {
