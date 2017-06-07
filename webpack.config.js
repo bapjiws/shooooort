@@ -35,22 +35,17 @@ if (inProductionMode) {
 
     plugins.push(
         new webpack.DefinePlugin(envVars),
-        new webpack.HotModuleReplacementPlugin() // <-- To generate hot update chunks
+        new webpack.HotModuleReplacementPlugin()
     )
 }
 
-/*On how to use Hot Module Replacement + React Hot Loader, see:
- https://medium.com/@rajaraodv/webpacks-hmr-react-hot-loader-the-missing-manual-232336dc0d96#.npgb2r5nn
- http://gaearon.github.io/react-hot-loader/getstarted/*/
-// TODO: enable hot reloading for scss files(?)
 module.exports = {
     entry: inProductionMode ? {
         bundle: './src/index.js',
         vendor: ['react', 'react-dom', 'react-redux', 'redux', 'redux-persist', 'redux-thunk']
     } : [
-        'webpack-dev-server/client?http://localhost:8080', // <-- Enables websocket connection (needs url and port)
-        'webpack/hot/only-dev-server', // <-- to perform HMR in the browser; "only" prevents reload on syntax errors
-        './src/index.js' // <-- The appʼs entry point
+        'webpack-hot-middleware/client',
+        './src/index.js'
     ],
 
     output: {
@@ -110,9 +105,5 @@ module.exports = {
 
     plugins,
 
-    devtool: inProductionMode ? undefined : 'source-map',
-
-    devServer: {
-        hot: true // <-- Enables HMR in webpack-dev-server and in libs running in the browser
-    }
+    devtool: inProductionMode ? undefined : 'source-map'
 };
