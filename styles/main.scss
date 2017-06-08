@@ -296,18 +296,18 @@ input[type=text] {
   transition-property: border-color, box-shadow;
   transition-timing-function: ease-in-out;
   transition-duration: .3s;
-}
 
-input[type=text]:focus {
-  @include highlightInputOnFocus($borderColor: $focus-input);
-}
+  &:focus {
+    @include highlightInputOnFocus($borderColor: $focus-input);
+  }
 
-input[type=text].input-focus-incorrect:focus {
-  @include highlightInputOnFocus($borderColor: $incorrect-input);
-}
+  &.input-focus-incorrect:focus {
+    @include highlightInputOnFocus($borderColor: $incorrect-input);
+  }
 
-input[type=text].input-focus-correct:focus {
-  @include highlightInputOnFocus($borderColor: $correct-input);
+  &.input-focus-correct:focus {
+    @include highlightInputOnFocus($borderColor: $correct-input);
+  }
 }
 /*TEXT INPUT*/
 
