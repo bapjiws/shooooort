@@ -1,3 +1,5 @@
+@import 'functions';
+
 // Source: https://github.com/magnetikonline/sassboilerplate/blob/master/fontface.scss
 // Also see: https://css-tricks.com/snippets/css/using-font-face/
 @mixin fontFace($family, $src, $style: normal, $weight: normal) {
@@ -9,10 +11,10 @@
   }
 }
 
-@mixin highlightInputOnFocus($borderColor, $innerBoxShadow: inset 0 1px 1px rgba(0, 0, 0, .075)) {
+@mixin highlightInputOnFocus($borderColor) {
   outline: none;
   border-color: $borderColor;
 
   // On Webstorm not showing the color preview for rgba($color, $opacity), see: https://youtrack.jetbrains.com/issue/WEB-6015
-  box-shadow: $innerBoxShadow, 0 0 8px rgba($borderColor, .6); // or transparentize($borderColor, 0.4)
+  box-shadow: getInputInnerBoxShadow(), getInputOuterBoxShadow($borderColor); // or transparentize($borderColor, 0.4)
 }

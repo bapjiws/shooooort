@@ -1,0 +1,7 @@
+@function getInputOuterBoxShadow($borderColor) {
+  @return 0 0 8px rgba($borderColor, .6);
+}
+
+@function getInputInnerBoxShadow($borderColor: #000000) {
+  @return inset 0 1px 1px rgba($borderColor, .075);
+}
