@@ -63,8 +63,8 @@ module.exports = {
                     path.join(__dirname, "/redux"),
                     path.join(__dirname, "/utils")
                 ],
-                // React Hot Loader ahouls be automatically disabled in production
-                use: inProductionMode ? ['babel-loader'] : ['react-hot-loader/webpack', 'babel-loader']
+                // React Hot Loader should be automatically disabled in production.
+                use: ['react-hot-loader/webpack', 'babel-loader']
             },
 
             {
