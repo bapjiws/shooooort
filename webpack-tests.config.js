@@ -3,7 +3,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: ['./tests/linksData.js'],
+    entry: ['./tests/index.js'],
     target: 'node',
     output: {
         path: path.join(__dirname, '_build'),
