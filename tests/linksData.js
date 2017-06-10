@@ -1,4 +1,4 @@
-import test from 'tape';
+import test from 'ava';
 import deepFreeze from 'deep-freeze';
 
 import linksDataReducer from '../redux/reducers/linksData';
@@ -41,7 +41,6 @@ test('should add a new entry to the data object with stats on links', t => {
     };
 
     t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action)), linksDataAfter);
-    t.end();
 });
 
 test('should add an error to the data object with stats on links, otherwise leave it intact (2 actions)', t => {
@@ -91,7 +90,6 @@ test('should add an error to the data object with stats on links, otherwise leav
 
     t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_one)), linksDataAfter);
     t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_two)), linksDataAfter);
-    t.end();
 });
 
 test('should update the entire data object with stats on links', t => {
@@ -166,7 +164,6 @@ test('should update the entire data object with stats on links', t => {
     };
 
     t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action)), linksDataAfter);
-    t.end();
 });
 
 test('should erase the entire data object with stats on links', t => {
@@ -202,5 +199,4 @@ test('should erase the entire data object with stats on links', t => {
     };
 
     t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action)), linksDataAfter);
-    t.end();
 });
