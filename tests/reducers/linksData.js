@@ -1,7 +1,7 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
 
-import linksDataReducer from '../redux/reducers/linksData';
+import linksDataReducer from '../../redux/reducers/linksData';
 
 import {
     ADD_LINKS_DATA_ENTRY_SUCCESS,
@@ -9,7 +9,7 @@ import {
     UPDATE_LINKS_DATA_SUCCESS,
     UPDATE_LINKS_DATA_FAILURE,
     CLEAR_LINKS_DATA
-} from '../redux/actions/types';
+} from '../../redux/actions/types';
 
 test('should add a new entry to the data object with stats on links', t => {
     const linksDataBefore = {

@@ -1,3 +1,3 @@
 // See: http://redux.js.org/docs/recipes/WritingTests.html
-import './linksData';
-import './userInput';
+import './reducers/linksData';
+import './components/userInput';

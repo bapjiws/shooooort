@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 // Import the unconnected version -- see http://redux.js.org/docs/recipes/WritingTests.html#connected-components
-import { UserInput } from '../src/components/UserInput';
+import { UserInput } from '../../src/components/UserInput';
 
 test.beforeEach(t => {
     t.context.data = {
