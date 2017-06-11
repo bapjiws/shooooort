@@ -6,7 +6,8 @@ import { shortenLink } from '../../redux/actions/linksData';
 
 import { inputIsValid } from '../../utils/inputValidation';
 
-class UserInput extends Component {
+// Use named export for unconnected component (for tests)
+export class UserInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
