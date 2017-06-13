@@ -15,16 +15,14 @@ export const addShortcodeFailure = error => ({type: ADD_LINKS_DATA_ENTRY_FAILURE
 
 export const shortenLink = url => {
     return (dispatch, getState, { axiosInstance }) => {
-        axiosInstance({
+        return axiosInstance({
             method: 'post',
             url: '/shorten',
             data: { url }
         })
             .then(response => {
-                console.log('response.data:', response.data);
-
                 let data = {};
-                const id = responseDataIdToId(response.data.id); // TODO: extract into utils
+                const id = responseDataIdToId(response.data.id);
                 data[id] = {
                     url,
                     startDate: new Date(),
@@ -32,6 +30,8 @@ export const shortenLink = url => {
                     visits: 0
                 };
                 dispatch(addShortcodeSuccess(id, data));
+
+                return Promise.resolve();
             })
             .catch(error => dispatch(addShortcodeFailure(error)));
     }

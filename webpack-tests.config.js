@@ -3,7 +3,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: ['./tests/index.js'],
+    entry: ['babel-polyfill', './tests/index.js'],
     target: 'node', // in order to ignore built-in modules like path, fs, etc.
     output: {
         path: path.join(__dirname, '_build'),

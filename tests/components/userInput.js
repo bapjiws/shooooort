@@ -40,6 +40,9 @@ test('UserInput w/ valid input should not show feedback, contain check icon and 
 });
 
 test.skip('UserInput should dispatch action, blur on Enter w/ valid input and clear the input field', t => {
+    // See https://github.com/reactjs/redux/issues/1534#issuecomment-205061049 on passing down the store
+    // Also, see https://github.com/reactjs/react-redux/issues/325#issuecomment-262223079 on mapStateToProps
+
     const { wrapper } = t.context.data;
 
     wrapper.find('input[type="text"]').simulate('change', { target: { value: 'http://' } });
