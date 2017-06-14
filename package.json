@@ -61,8 +61,5 @@
     "prod": "NODE_ENV=production node server.js",
     "release-the-kraken": "yarn run build && yarn run prod",
     "test": "webpack --config webpack-tests.config.js && ava _build/tests.js --verbose"
-  },
-  "ava": {
-    "require": ["./tests/helpers/setup-browser-env.js"]
   }
 }
