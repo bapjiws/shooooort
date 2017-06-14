@@ -1,6 +1,11 @@
 import test from 'ava';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { spy } from 'sinon';
+import ReactDOM from 'react-dom';
+
+import browserEnv from 'browser-env';
+browserEnv();
 
 // Import the unconnected version -- see http://redux.js.org/docs/recipes/WritingTests.html#connected-components
 import { UserInput } from '../../src/components/UserInput';
@@ -39,17 +44,55 @@ test('UserInput w/ valid input should not show feedback, contain check icon and 
     t.is(wrapper.find('svg').hasClass('correct-input-icon'), true);
 });
 
-test.skip('UserInput should dispatch action, blur on Enter w/ valid input and clear the input field', t => {
+test('can query for DOM elements', t => {
+    document.body.innerHTML = '<p>Hello, world</p>';
+    const para = document.querySelector('p');
+    t.is(para.innerHTML, 'Hello, world');
+});
+
+test.only('UserInput should blur, fire shortenLink and clear the input field on Enter w/ valid input', t => {
     // See https://github.com/reactjs/redux/issues/1534#issuecomment-205061049 on passing down the store
     // Also, see https://github.com/reactjs/react-redux/issues/325#issuecomment-262223079 on mapStateToProps
 
-    const { wrapper } = t.context.data;
+    document.body.innerHTML = '<div id="root"></div>';
+    // ReactDOM.render(<UserInput />, document.getElementById('root'));
+    // let input = document.querySelector('input[type="text"]');
+    // console.log('input:', input.blur);
+    //
+    // input.addEventListener('onBlur', event => console.log('event:', event));
+    // input.blur();
+
+
+    // const { wrapper } = t.context.data;
+    const shortenLink = spy();
+    // document.body.innerHTML = '<div id="root"></div>';
+    const wrapper = mount(<UserInput shortenLink={shortenLink}/>, { attachTo: document.body.firstChild });
+
+    wrapper.find('input[type="text"]').simulate('focus');
+    wrapper.find('input[type="text"]').simulate('change', { target: { value: 'h' } });
+
+    t.is(wrapper.state('input'), 'h');
+    t.is(wrapper.find('input[type="text"]').hasClass('input-focus-incorrect'), true);
+
+
+    // spy(wrapper.find('input[type="text"]'), 'blur');
+    spy(document.querySelector('input[type="text"]'), 'focus');
+    document.querySelector('input[type="text"]').focus();
+    // wrapper.find('input[type="text"]').simulate('focus');
+    t.is(document.querySelector('input[type="text"]').focus.calledOnce, true);
+    t.is(document.activeElement.nodeName, 'INPUT');
+    // console.log('TEST:', document.activeElement.nodeName);
 
     wrapper.find('input[type="text"]').simulate('change', { target: { value: 'http://' } });
     t.is(wrapper.state('input'), 'http://');
     wrapper.find('input[type="text"]').simulate('keyDown', {key: 'Enter', keyCode: 13});
+    t.is(shortenLink.calledOnce, true);
     t.is(wrapper.state('input'), '');
+    // t.is(document.querySelector('input[type="text"]').focus.calledOnce, true);
+    t.is(document.activeElement.nodeName, 'BODY');
+    // console.log('TEST:', document.activeElement.nodeName);
 
-    // TODO: props.shortenLink should be called -- create spy and pass mock store or wrap into Provider
-    // TODO: check if text input no longer has focus
+
+    // TODO: ideally test that event.preventDefault() is called
+    // TODO: Remove setup-browser-env.js and clean package.json when done
 });

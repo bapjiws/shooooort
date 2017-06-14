@@ -9,6 +9,7 @@
   "devDependencies": {
     "ava": "^0.19.1",
     "babel-polyfill": "^6.23.0",
+    "browser-env": "^2.0.31",
     "css-hot-loader": "^1.1.1",
     "deep-freeze": "^0.0.1",
     "enzyme": "^2.8.2",
@@ -60,5 +61,8 @@
     "prod": "NODE_ENV=production node server.js",
     "release-the-kraken": "yarn run build && yarn run prod",
     "test": "webpack --config webpack-tests.config.js && ava _build/tests.js --verbose"
+  },
+  "ava": {
+    "require": ["./tests/helpers/setup-browser-env.js"]
   }
 }
