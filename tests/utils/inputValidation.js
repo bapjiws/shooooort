@@ -1,7 +1,7 @@
 import test from 'ava';
 import { inputIsValid } from '../../utils/inputValidation';
 
-test.only('inputIsValid should detect URLs with both "http://" and "https://" prefixes', t => {
+test('inputIsValid should detect URLs with both "http://" and "https://" prefixes', t => {
     t.is(inputIsValid('http:/'), false);
     t.is(inputIsValid('https:/'), false);
     t.is(inputIsValid('http://'), true);
