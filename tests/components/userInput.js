@@ -83,9 +83,7 @@ test.only('UserInput should blur, fire shortenLink and clear the input field on 
     // t.is(document.querySelector('input[type="text"]').blur.calledOnce, true);
     t.is(document.activeElement.nodeName, 'BODY');
 
-    // TODO: ideally test that event.preventDefault() is called
-
-    // Trying to test form submission. Won't work:
+    // Trying to test form submission (needed to test if event.preventDefault() has been called on Enter). Won't work:
     // spy(wrapper.find('form').getDOMNode(), 'submit');
     // wrapper.find('input[type="text"]').simulate('change', { target: { value: 'http://' } });
     // wrapper.find('input[type="text"]').simulate('keyDown', {key: 'Enter', keyCode: 13});
