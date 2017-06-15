@@ -2,3 +2,4 @@
 import './reducers/linksData';
 import './components/userInput';
 import './actions/linksData';
+import './utils/extractId';

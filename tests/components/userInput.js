@@ -49,7 +49,7 @@ test('can query for DOM elements', t => {
     t.is(para.innerHTML, 'Hello, world');
 });
 
-test.only('UserInput should blur, fire shortenLink and clear the input field on Enter w/ valid input', t => {
+test('UserInput should blur, fire shortenLink and clear the input field on Enter w/ valid input', t => {
     // It seems that wrapper.ref() does not work with the new "ref" style (see https://github.com/airbnb/enzyme/issues/298
     // and https://github.com/airbnb/enzyme/issues/566. We will mount the component into the document and detect
     // changes in document.activeElement.
