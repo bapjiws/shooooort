@@ -53,27 +53,41 @@ test.only('UserInput should blur, fire shortenLink and clear the input field on 
     // It seems that wrapper.ref() does not work with the new "ref" style (see https://github.com/airbnb/enzyme/issues/298
     // and https://github.com/airbnb/enzyme/issues/566. We will mount the component into the document and detect
     // changes in document.activeElement.
-
     document.body.innerHTML = '<div id="root"></div>';
     const shortenLink = spy();
     const wrapper = mount(<UserInput shortenLink={shortenLink}/>, { attachTo: document.body.firstChild });
 
     // Put the cursor into the input field. The first three lines are there for the sake of exercise, because the same
     // won't work with blur for some reason (commented out below). We'll be relying on document.activeElement.
-    spy(document.querySelector('input[type="text"]'), 'focus');
-    document.querySelector('input[type="text"]').focus();
-    t.is(document.querySelector('input[type="text"]').focus.calledOnce, true);
+    spy(wrapper.find('input[type="text"]').getDOMNode(), 'focus');
+    wrapper.find('input[type="text"]').getDOMNode().focus();
+    t.is(wrapper.find('input[type="text"]').getDOMNode().focus.calledOnce, true);
+    // OR:
+    // spy(document.querySelector('input[type="text"]'), 'focus')
+    // document.querySelector('input[type="text"]').focus();
+    // t.is(document.querySelector('input[type="text"]').focus.calledOnce, true);
     t.is(document.activeElement.nodeName, 'INPUT');
 
     // Type correct input and hit Enter
+    spy(wrapper.find('input[type="text"]').getDOMNode(), 'blur');
+    // OR:
+    // spy(document.querySelector('input[type="text"]'), 'blur');
+
     wrapper.find('input[type="text"]').simulate('change', { target: { value: 'http://' } });
     t.is(wrapper.state('input'), 'http://');
     wrapper.find('input[type="text"]').simulate('keyDown', {key: 'Enter', keyCode: 13});
     t.is(wrapper.state('input'), '');
     t.is(shortenLink.calledOnce, true); // shortenLink is tested separately in actions
-    // spy(document.querySelector('input[type="text"]'), 'blur');
+    t.is(wrapper.find('input[type="text"]').getDOMNode().blur.calledOnce, true);
+    // OR:
     // t.is(document.querySelector('input[type="text"]').blur.calledOnce, true);
     t.is(document.activeElement.nodeName, 'BODY');
 
     // TODO: ideally test that event.preventDefault() is called
+
+    // Trying to test form submission. Won't work:
+    // spy(wrapper.find('form').getDOMNode(), 'submit');
+    // wrapper.find('input[type="text"]').simulate('change', { target: { value: 'http://' } });
+    // wrapper.find('input[type="text"]').simulate('keyDown', {key: 'Enter', keyCode: 13});
+    // t.is(wrapper.find('form').getDOMNode().submit.calledOnce, true);
 });
