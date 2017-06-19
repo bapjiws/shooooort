@@ -7,9 +7,6 @@
   "author": "bapjiws <alex.boklin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-polyfill": "^6.23.0",
-    "browser-env": "^2.0.31",
     "css-hot-loader": "^1.1.1",
     "deep-freeze": "^0.0.1",
     "enzyme": "^2.8.2",

@@ -1,10 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { spy } from 'sinon';
-
-// TODO: remove
-import browserEnv from 'browser-env';
-browserEnv();
+import { spy } from 'sinon'; // TODO: use jest.spyOn(object, methodName)
 
 // Import the unconnected version -- see http://redux.js.org/docs/recipes/WritingTests.html#connected-components
 import { UserInput } from '../../src/components/UserInput';
@@ -44,13 +40,6 @@ test('UserInput w/ valid input should not show feedback, contain check icon and 
     ).toBe(true); // or simply input-focus-correct
     expect(wrapper.contains(inputHelp)).toBe(false);
     expect(wrapper.find('svg').hasClass('correct-input-icon')).toBe(true);
-});
-
-// TODO: remove
-test('can query for DOM elements', () => {
-    document.body.innerHTML = '<p>Hello, world</p>';
-    const para = document.querySelector('p');
-    expect(para.innerHTML).toBe('Hello, world');
 });
 
 test('UserInput should blur, fire shortenLink and clear the input field on Enter w/ valid input', () => {
