@@ -1,10 +1,9 @@
-import test from 'ava';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
 import sinon from 'sinon';
 import axios from 'axios';
-// import httpAdapter from 'axios/lib/adapters/http';
+import httpAdapter from 'axios/lib/adapters/http';
 
 import {
     ADD_LINKS_DATA_ENTRY_SUCCESS
@@ -15,7 +14,7 @@ const host = 'http://localhost';
 
 const axiosInstance = axios.create();
 axiosInstance.defaults.host = host;
-// axiosInstance.defaults.adapter = httpAdapter;
+axiosInstance.defaults.adapter = httpAdapter;
 
 const middlewares = [ thunk.withExtraArgument({ axiosInstance }) ];
 const mockStore = configureMockStore(middlewares);
@@ -27,11 +26,11 @@ const store = mockStore({
     }
 });
 
-test('Create ADD_LINKS_DATA_ENTRY_SUCCESS when shortening a link has succeeded', async t => {
+test('Create ADD_LINKS_DATA_ENTRY_SUCCESS when shortening a link has succeeded', async () => {
     // Lock time so that new Date() in mock action and in shortenLink yield exactly the same time
     let clock = sinon.useFakeTimers();
 
-    t.plan(1);
+    expect.assertions(1);
 
     nock(host)
         .post('/shorten', {
@@ -59,7 +58,7 @@ test('Create ADD_LINKS_DATA_ENTRY_SUCCESS when shortening a link has succeeded',
     ];
 
     await store.dispatch(shortenLink('http://test.com'));
-    t.deepEqual(store.getActions(), expectedActions);
+    expect(store.getActions()).toEqual(expectedActions);
 });
 
 // TODO: test fetchLinksInfo

@@ -1,4 +1,3 @@
-import test from 'ava';
 import deepFreeze from 'deep-freeze';
 
 import linksDataReducer from '../../redux/reducers/linksData';
@@ -11,7 +10,7 @@ import {
     CLEAR_LINKS_DATA
 } from '../../redux/actions/types';
 
-test('should add a new entry to the data object with stats on links', t => {
+test('should add a new entry to the data object with stats on links', () => {
     const linksDataBefore = {
         data: {},
         error: null
@@ -40,10 +39,10 @@ test('should add a new entry to the data object with stats on links', t => {
         error: null
     };
 
-    t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action)), linksDataAfter);
+    expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action))).toEqual(linksDataAfter);
 });
 
-test('should add an error to the data object with stats on links, otherwise leave it intact (2 actions)', t => {
+test('should add an error to the data object with stats on links, otherwise leave it intact (2 actions)', () => {
     const linksDataBefore = {
         data: {
             '918dbe': {
@@ -88,11 +87,11 @@ test('should add an error to the data object with stats on links, otherwise leav
         error: 'A VERY DRAMATIC ERROR ;('
     };
 
-    t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_one)), linksDataAfter);
-    t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_two)), linksDataAfter);
+    expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_one))).toEqual(linksDataAfter);
+    expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_two))).toEqual(linksDataAfter);
 });
 
-test('should update the entire data object with stats on links', t => {
+test('should update the entire data object with stats on links', () => {
     const linksDataBefore = {
         data: {
             '918dbe': {
@@ -163,10 +162,10 @@ test('should update the entire data object with stats on links', t => {
         error: null
     };
 
-    t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action)), linksDataAfter);
+    expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action))).toEqual(linksDataAfter);
 });
 
-test('should erase the entire data object with stats on links', t => {
+test('should erase the entire data object with stats on links', () => {
     const linksDataBefore = {
         data: {
             '918dbe': {
@@ -198,5 +197,5 @@ test('should erase the entire data object with stats on links', t => {
         error: null
     };
 
-    t.deepEqual(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action)), linksDataAfter);
+    expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action))).toEqual(linksDataAfter);
 });

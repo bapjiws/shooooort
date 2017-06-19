@@ -13,6 +13,7 @@
     "css-hot-loader": "^1.1.1",
     "deep-freeze": "^0.0.1",
     "enzyme": "^2.8.2",
+    "jest": "^20.0.4",
     "nock": "^9.0.13",
     "nodemon": "^1.11.0",
     "react-addons-test-utils": "^15.5.1",
@@ -60,6 +61,6 @@
     "dev": "nodemon server.js",
     "prod": "NODE_ENV=production node server.js",
     "release-the-kraken": "yarn run build && yarn run prod",
-    "test": "webpack --config webpack-tests.config.js && ava _build/tests.js --verbose"
+    "test": "jest"
   }
 }
