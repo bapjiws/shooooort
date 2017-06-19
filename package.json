@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A URL shortener service that relies on the Google URL Shortener API",
   "main": "index.js",
-  "repository": "https://github.com/bapjiws/url_shortener_frontend.git",
+  "repository": "https://github.com/bapjiws/url-shortener-frontend.git",
   "author": "bapjiws <alex.boklin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
