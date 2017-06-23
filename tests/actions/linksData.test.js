@@ -1,3 +1,6 @@
+// On testing async actions in a different vein, see:
+// https://medium.com/@iamcherta/testing-async-actions-on-redux-without-following-the-manual-87d7bd804fb8
+
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
