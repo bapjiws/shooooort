@@ -4,7 +4,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import nock from 'nock';
-import sinon from 'sinon';
 import axios from 'axios';
 import httpAdapter from 'axios/lib/adapters/http';
 
@@ -31,7 +30,7 @@ const store = mockStore({
 
 test('Create ADD_LINKS_DATA_ENTRY_SUCCESS when shortening a link has succeeded', async () => {
     // Lock time so that new Date() in mock action and in shortenLink yield exactly the same time
-    let clock = sinon.useFakeTimers(); // TODO: Use Jest timer mock: https://facebook.github.io/jest/docs/en/timer-mocks.html#content
+    global.Date = jest.fn();
 
     expect.assertions(1);
 
