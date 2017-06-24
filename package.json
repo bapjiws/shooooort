@@ -57,6 +57,6 @@
     "dev": "nodemon server.js",
     "prod": "NODE_ENV=production node server.js",
     "release-the-kraken": "yarn run build && yarn run prod",
-    "test": "jest"
+    "test": "jest --silent --verbose"
   }
 }

@@ -28,7 +28,8 @@ const store = mockStore({
     }
 });
 
-test('Create ADD_LINKS_DATA_ENTRY_SUCCESS when shortening a link has succeeded', async () => {
+describe('shortenLink', () => {
+    test('should create ADD_LINKS_DATA_ENTRY_SUCCESS w/ payload on success', async () => {
     // Lock time so that new Date() in mock action and in shortenLink yield exactly the same time
     global.Date = jest.fn();
 
@@ -62,6 +63,8 @@ test('Create ADD_LINKS_DATA_ENTRY_SUCCESS when shortening a link has succeeded',
     await store.dispatch(shortenLink('http://test.com'));
     expect(store.getActions()).toEqual(expectedActions);
 });
+});
+
 
 // TODO: test fetchLinksInfo
 // Example of response entry for fetchLinksInfo

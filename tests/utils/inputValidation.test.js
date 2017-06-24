@@ -1,8 +1,13 @@
 import { inputIsValid } from '../../utils/inputValidation';
 
-test('inputIsValid should detect URLs with both "http://" and "https://" prefixes', () => {
-    expect(inputIsValid('http:/')).toBe(false);
-    expect(inputIsValid('https:/')).toBe(false);
-    expect(inputIsValid('http://')).toBe(true);
-    expect(inputIsValid('https://')).toBe(true);
+describe('inputIsValid', () => {
+    test('should correctly detect URL with "http://" prefix', () => {
+        expect(inputIsValid('http:/')).toBe(false);
+        expect(inputIsValid('http://')).toBe(true);
+    });
+
+    test('should correctly detect URL with "https://" prefix', () => {
+        expect(inputIsValid('https:/')).toBe(false);
+        expect(inputIsValid('https://')).toBe(true);
+    });
 });
