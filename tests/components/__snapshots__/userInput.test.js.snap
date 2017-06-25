@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserInput renders correctly 1`] = `
+<div
+  className="user-input-container"
+>
+  <form
+    className="form-container"
+  >
+    <input
+      className="text-input"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      placeholder="Paste the link you want to shorten here"
+      type="text"
+      value=""
+    />
+  </form>
+  <div
+    className="button-container"
+  >
+    <button
+      disabled={true}
+      onClick={[Function]}
+    >
+      Shorten this link
+    </button>
+  </div>
+</div>
+`;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import toJson from 'enzyme-to-json'; // Documentation: https://github.com/adriantoine/enzyme-to-json
 
 // Import the unconnected version -- see http://redux.js.org/docs/recipes/WritingTests.html#connected-components
 import { UserInput } from '../../src/components/UserInput';
@@ -11,6 +12,10 @@ beforeEach(() => {
 });
 
 describe('UserInput', () => {
+    it('renders correctly', () => {
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
+
     it('should show feedback, cross icon and have "incorrect" style on focus w/ invalid input', () => {
         // const { wrapper, inputHelp } = t.context.data;
 
