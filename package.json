@@ -58,6 +58,14 @@
     "dev": "nodemon server.js",
     "prod": "NODE_ENV=production node server.js",
     "release-the-kraken": "yarn run build && yarn run prod",
-    "test": "jest --silent --verbose"
+    "test": "jest --silent --verbose",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "redux/**/*.{js,jsx}",
+      "utils/*.js"
+    ]
   }
 }
