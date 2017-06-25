@@ -11,7 +11,7 @@ import {
 } from '../../redux/actions/types';
 
 describe('linksDataReducer', () => {
-    test('should add a new entry to the data object with stats on links', () => {
+    it('should add a new entry to the data object with stats on links', () => {
         const linksDataBefore = {
             data: {},
             error: null
@@ -43,7 +43,7 @@ describe('linksDataReducer', () => {
         expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action))).toEqual(linksDataAfter);
     });
 
-    test('should add an error to the data object with stats on links, otherwise leave it intact (2 actions)', () => {
+    it('should add an error to the data object with stats on links, otherwise leave it intact (2 actions)', () => {
         const linksDataBefore = {
             data: {
                 '918dbe': {
@@ -92,7 +92,7 @@ describe('linksDataReducer', () => {
         expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action_two))).toEqual(linksDataAfter);
     });
 
-    test('should update the entire data object with stats on links', () => {
+    it('should update the entire data object with stats on links', () => {
         const linksDataBefore = {
             data: {
                 '918dbe': {
@@ -166,7 +166,7 @@ describe('linksDataReducer', () => {
         expect(linksDataReducer(deepFreeze(linksDataBefore), deepFreeze(action))).toEqual(linksDataAfter);
     });
 
-    test('should erase the entire data object with stats on links', () => {
+    it('should erase the entire data object with stats on links', () => {
         const linksDataBefore = {
             data: {
                 '918dbe': {

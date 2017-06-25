@@ -29,7 +29,7 @@ const store = mockStore({
 });
 
 describe('shortenLink', () => {
-    test('should create ADD_LINKS_DATA_ENTRY_SUCCESS w/ payload on success', async () => {
+    it('should create ADD_LINKS_DATA_ENTRY_SUCCESS w/ payload on success', async () => {
     // Lock time so that new Date() in mock action and in shortenLink yield exactly the same time
     global.Date = jest.fn();
 

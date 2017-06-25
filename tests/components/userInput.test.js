@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 describe('UserInput', () => {
-    test('should show feedback, cross icon and have "incorrect" style on focus w/ invalid input', () => {
+    it('should show feedback, cross icon and have "incorrect" style on focus w/ invalid input', () => {
         // const { wrapper, inputHelp } = t.context.data;
 
         expect(wrapper.find('input[type="text"]').hasClass('text-input')).toBe(true);
@@ -30,7 +30,7 @@ describe('UserInput', () => {
         }, '');
     });
 
-    test('should not show feedback, contain check icon and have "correct" style on focus w/ valid input', () => {
+    it('should not show feedback, contain check icon and have "correct" style on focus w/ valid input', () => {
         // const { wrapper, inputHelp } = t.context.data;
 
         wrapper.find('input[type="text"]').simulate('change', { target: { value: 'http://' } });
@@ -42,7 +42,7 @@ describe('UserInput', () => {
         expect(wrapper.find('svg').hasClass('correct-input-icon')).toBe(true);
     });
 
-    test('should blur, fire shortenLink and clear the input field on Enter w/ valid input', () => {
+    it('should blur, fire shortenLink and clear the input field on Enter w/ valid input', () => {
         // It seems that wrapper.ref() does not work with the new "ref" style (see https://github.com/airbnb/enzyme/issues/298
         // and https://github.com/airbnb/enzyme/issues/566. We will mount the component into the document and detect
         // changes in document.activeElement.
