@@ -5,13 +5,13 @@ import toJson from 'enzyme-to-json'; // Documentation: https://github.com/adrian
 // Import the unconnected version -- see http://redux.js.org/docs/recipes/WritingTests.html#connected-components
 import { UserInput } from '../../src/components/UserInput';
 
-let wrapper, inputHelp;
-beforeEach(() => {
-    wrapper = shallow(<UserInput />);
-    inputHelp = <div className="text-validation-help input-help">Links should start with "http://" or "https://"</div>;
-});
-
 describe('UserInput', () => {
+    let wrapper, inputHelp;
+    beforeEach(() => {
+        wrapper = shallow(<UserInput />);
+        inputHelp = <div className="text-validation-help input-help">Links should start with "http://" or "https://"</div>;
+    });
+
     it('renders correctly', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
