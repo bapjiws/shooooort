@@ -19,16 +19,21 @@ if (!inProductionMode) {
 }
 
 if (!inProductionMode) {
-    // Webpack Hot Middleware: https://github.com/glenjamin/webpack-hot-middleware
-    // Webpack Dev Middleware: https://github.com/webpack/webpack-dev-middleware
     const webpackConfig = require('./webpack.config');
     const compiler = require('webpack')(webpackConfig);
 
-    app.use(require('webpack-dev-middleware')(compiler, {
+    // Webpack Dev Middleware: https://github.com/webpack/webpack-dev-middleware
+    const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, {
         noInfo: true, publicPath: webpackConfig.output.publicPath
-    }));
+    });
+    // Webpack Hot Middleware: https://github.com/glenjamin/webpack-hot-middleware
+    const webpackHotMiddleware = require('webpack-hot-middleware')(compiler);
 
-    app.use(require("webpack-hot-middleware")(compiler));
+    app.use(webpackDevMiddleware);
+    app.use(webpackHotMiddleware);
+} else {
+    app.use(express.static(path.join(__dirname, 'build')));
+    app.use('/assets', express.static(path.join(__dirname, './assets')));
 }
 
 app.use(bodyParser.json());
@@ -40,9 +45,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.use('/assets', express.static(path.join(__dirname, './assets')));
-
 app.get('/:shortcode/stats', (req, res, next) => {
     request.get({ url, qs: { key, shortUrl: `http://goo.gl/${req.params.shortcode}`, projection: 'ANALYTICS_CLICKS' } }, (error, response, body) => {
         console.log('error:', error);
@@ -53,9 +55,17 @@ app.get('/:shortcode/stats', (req, res, next) => {
     });
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build/index.html'));
-});
+if (!inProductionMode) {
+    const bundlePath = path.join(__dirname, './build/index.html');
+    app.get('*', (req, res) =>  {
+        res.write(webpackDevMiddleware.fileSystem.readFileSync(bundlePath));
+        res.end();
+    });
+} else {
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'build/index.html'));
+    });
+}
 
 app.post('/shorten', (req, res, next) => {
     request.post({ url, body: { longUrl: req.body.url }, json: true, qs: { key } }, (error, response, body) => {
