@@ -4,14 +4,7 @@ require('jasmine-check').install();
 
 describe('responseDataIdToId', () => {
     check.it(
-        'should correctly extract id from URLs beginning with http',
-        gen.asciiString.notEmpty(),
-        code => expect(responseDataIdToId(`https://goo.gl/${code}`)).toBe(code)
-    );
-
-    check.it(
-        'should correctly extract id from URLs beginning with https',
-        gen.asciiString.notEmpty(),
-        code => expect(responseDataIdToId(`https://goo.gl/${code}`)).toBe(code)
-    );
+        'should correctly extract id from URLs beginning with http or https',
+        gen.asciiString.notEmpty(), gen.oneOf(['http', 'https']),
+        (code, protocol) => expect(responseDataIdToId(`${protocol}://goo.gl/${code}`)).toBe(code));
 });
