@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
+import { combineEpics } from 'redux-observable';
 import linksDataReducer from './linksData';
+import { fetchLinksInfoRxjs } from '../actions/linksData';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     linksData: linksDataReducer
 });
 
-export default rootReducer
+export const rootEpic = combineEpics(
+    fetchLinksInfoRxjs // TODO: amend
+);

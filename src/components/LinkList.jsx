@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 import LinkListRow from './LinkListRow';
 
-import { fetchLinksInfo } from '../../redux/actions/linksData';
+import { fetchLinksInfo, updateLinks } from '../../redux/actions/linksData';
 
 class LinkList extends Component {
     componentDidMount() {
-        this.props.fetchLinksInfo();
+        // this.props.fetchLinksInfo();
+        this.props.updateLinks();
+
         // this.timerID = setInterval(
         //     () => this.props.fetchLinksInfo(),
         //     1000
@@ -48,5 +50,5 @@ export default connect(
     state => ({
         linksData: state.linksData.data
     }),
-    { fetchLinksInfo }
+    { fetchLinksInfo, updateLinks }
 )(LinkList);

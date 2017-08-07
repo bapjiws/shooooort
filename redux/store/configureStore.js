@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers/rootReducer';
-import thunk from 'redux-thunk';
+import { createEpicMiddleware } from 'redux-observable';
+import { rootEpic, rootReducer } from '../reducers/rootReducer';
+
+import thunk from 'redux-thunk';  // TODO: remove thunk when done
 import { autoRehydrate } from 'redux-persist';
 // Can't import it here when it's only installed as a dev dependency.
 // import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
@@ -9,8 +11,9 @@ import { getAxiosInstance } from '../../utils/axiosInstance';
 
 const axiosInstance = getAxiosInstance();
 
+const epicMiddleware = createEpicMiddleware(rootEpic);
 const configureStore = () => {
-    const middlewares = [thunk.withExtraArgument({ axiosInstance })];
+    const middlewares = [epicMiddleware, thunk.withExtraArgument({ axiosInstance })];
 
     return createStore(
         rootReducer,
