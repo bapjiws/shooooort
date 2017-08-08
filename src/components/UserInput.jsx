@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-import { shortenLink } from '../../redux/actions/linksData';
+import { shortenLink, addShortcode } from '../../redux/actions/linksData'; // The second one is the RxJS version
 
 import { inputIsValid } from '../../utils/inputValidation';
 
@@ -26,7 +26,8 @@ export class UserInput extends Component {
     };
 
     handleCLick = () => {
-        this.props.shortenLink(this.state.input);
+        // this.props.shortenLink(this.state.input);
+        this.props.addShortcode(this.state.input);
         this.setState({input: ''});
     };
 
@@ -39,7 +40,8 @@ export class UserInput extends Component {
                 }
 
                 event.preventDefault();
-                this.props.shortenLink(this.state.input);
+                // this.props.shortenLink(this.state.input);
+                this.props.addShortcode(this.state.input);
                 this.setState({input: ''});
                 this.textInput.blur();
                 break;
@@ -95,5 +97,5 @@ export class UserInput extends Component {
 
 export default connect(
     null, // mapStateToProps
-    { shortenLink }
+    { shortenLink, addShortcode } // The second one is the RxJS version
 )(UserInput);

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import LinkListRow from './LinkListRow';
 
-import { fetchLinksInfo, updateLinks } from '../../redux/actions/linksData';
+import { fetchLinksInfo, updateLinks } from '../../redux/actions/linksData'; // The second one is the RxJS version
 
 class LinkList extends Component {
     componentDidMount() {
@@ -50,5 +50,5 @@ export default connect(
     state => ({
         linksData: state.linksData.data
     }),
-    { fetchLinksInfo, updateLinks }
+    { fetchLinksInfo, updateLinks } // The second one is the RxJS version
 )(LinkList);

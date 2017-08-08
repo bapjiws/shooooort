@@ -15,6 +15,7 @@ import { switchMap } from 'rxjs/operator/switchMap';
 action$.ofType(...)::switchMap(...);*/
 
 import {
+    ADD_LINKS_DATA_ENTRY,
     ADD_LINKS_DATA_ENTRY_SUCCESS,
     ADD_LINKS_DATA_ENTRY_FAILURE,
     UPDATE_LINKS_DATA,
@@ -25,6 +26,7 @@ import {
 
 import { responseDataIdToId } from '../../utils/extractId';
 
+export const addShortcode = url => ({type: ADD_LINKS_DATA_ENTRY, url});
 export const addShortcodeSuccess = (shortcode, data) => ({type: ADD_LINKS_DATA_ENTRY_SUCCESS, shortcode, data});
 export const addShortcodeFailure = error => ({type: ADD_LINKS_DATA_ENTRY_FAILURE, error});
 
@@ -51,6 +53,25 @@ export const shortenLink = url => {
             .catch(error => dispatch(addShortcodeFailure(error)));
     }
 };
+
+export const shortenLinkRxjs = (action$, store) =>
+    action$.ofType(ADD_LINKS_DATA_ENTRY)
+        .mergeMap(action =>
+        ajax.post('/shorten', { url: action.url }, { 'Content-Type': 'application/json' })
+            .map(response => {
+                const { id: unparsedId, longUrl: url } = response.response;
+                const parsedId = responseDataIdToId(unparsedId);
+
+                let data = {};
+                data[responseDataIdToId(parsedId)] = {
+                    url,
+                    startDate: new Date(),
+                    lastVisited: new Date(),
+                    visits: 0
+                };
+
+                return addShortcodeSuccess(parsedId, data);
+        })) ;
 
 export const fetchLinksInfo = () => {
     return (dispatch, getState, { axiosInstance }) => {
@@ -81,7 +102,8 @@ export const fetchLinksInfo = () => {
     }
 };
 
-export const fetchLinksInfoRxjs = (action$, store) => action$.ofType(UPDATE_LINKS_DATA)
+export const fetchLinksInfoRxjs = (action$, store) =>
+    action$.ofType(UPDATE_LINKS_DATA)
     .mergeMap(action => {
         console.log('ACTION:', action);
         console.log('store.getState().linksData.data:', store.getState().linksData.data);
