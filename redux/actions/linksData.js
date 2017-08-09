@@ -38,6 +38,8 @@ export const shortenLink = url => {
             data: { url }
         })
             .then(response => {
+                console.log('response:', response.data);
+
                 let data = {};
                 const id = responseDataIdToId(response.data.id);
                 data[id] = {
@@ -56,22 +58,26 @@ export const shortenLink = url => {
 
 export const shortenLinkRxjs = (action$, store) =>
     action$.ofType(ADD_LINKS_DATA_ENTRY)
-        .mergeMap(action =>
-        ajax.post('/shorten', { url: action.url }, { 'Content-Type': 'application/json' })
-            .map(response => {
-                const { id: unparsedId, longUrl: url } = response.response;
-                const parsedId = responseDataIdToId(unparsedId);
+        .mergeMap(action => {
+            console.log('ACTION:', action);
+            return ajax.post('/shorten', { url: action.url }, { 'Content-Type': 'application/json' })
+                .map(response => {
+                    console.log('response:', response);
 
-                let data = {};
-                data[responseDataIdToId(parsedId)] = {
-                    url,
-                    startDate: new Date(),
-                    lastVisited: new Date(),
-                    visits: 0
-                };
+                    const { id: unparsedId, longUrl: url } = response.response;
+                    const parsedId = responseDataIdToId(unparsedId);
 
-                return addShortcodeSuccess(parsedId, data);
-        })) ;
+                    let data = {};
+                    data[responseDataIdToId(parsedId)] = {
+                        url,
+                        startDate: new Date(),
+                        lastVisited: new Date(),
+                        visits: 0
+                    };
+
+                    return addShortcodeSuccess(parsedId, data);
+                })
+        });
 
 export const fetchLinksInfo = () => {
     return (dispatch, getState, { axiosInstance }) => {
