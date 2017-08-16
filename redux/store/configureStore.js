@@ -8,10 +8,11 @@ import { autoRehydrate } from 'redux-persist';
 // import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import { getAxiosInstance } from '../../utils/axiosInstance';
+import * as api from '../../utils/api';
 
 const axiosInstance = getAxiosInstance();
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware(rootEpic, { dependencies: { api } } );
 const configureStore = () => {
     const middlewares = [epicMiddleware, thunk.withExtraArgument({ axiosInstance })];
 

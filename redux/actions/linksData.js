@@ -56,11 +56,12 @@ export const shortenLink = url => {
     }
 };
 
-export const shortenLinkRxjs = (action$, store) =>
-    action$.ofType(ADD_LINKS_DATA_ENTRY)
+export const shortenLinkRxjs = (action$, store, { api }) => {
+    console.log('API:', api);
+    return action$.ofType(ADD_LINKS_DATA_ENTRY)
         .mergeMap(action => {
             console.log('ACTION:', action);
-            return ajax.post('/shorten', { url: action.url }, { 'Content-Type': 'application/json' })
+            return api.postLink(action.url)
                 .map(response => {
                     console.log('response:', response);
 
@@ -78,6 +79,8 @@ export const shortenLinkRxjs = (action$, store) =>
                     return addShortcodeSuccess(parsedId, data);
                 })
         });
+}
+
 
 export const fetchLinksInfo = () => {
     return (dispatch, getState, { axiosInstance }) => {

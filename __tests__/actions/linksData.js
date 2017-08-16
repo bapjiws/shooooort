@@ -119,21 +119,19 @@ describe('shortenLink', () => {
                 }
             }
         };
-
-        // console.log('store:', store.getState());
-
-        // store.dispatch(addShortcode('http://test.com'));
-        // expect(store.getActions()).toEqual(expectedActions);
-
         const action$ = ActionsObservable.of(addShortcode('http://test.com'));
-        // console.log('action$:', action$);
-
-        console.log('shortenLinkRxjs(action$)', shortenLinkRxjs(action$));
-
-        return shortenLinkRxjs(action$)
+        const api = {
+            postLink: (url = 'http://test.com') => Observable.of(expectedAction)
+        };
+        shortenLinkRxjs(action$, null, { api })
             // .toArray()
-            .toPromise()
-            .then(actionReceived => console.log(actionReceived))
+            // .toPromise()
+            // .then(actionReceived => console.log(actionReceived))
+
+            .toArray()
+            .subscribe(actions => {
+                console.log(actions);
+            });
     });
 });
 
